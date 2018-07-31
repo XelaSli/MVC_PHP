@@ -1,11 +1,9 @@
 <?php
+session_start();
 require_once "../Models/Users.php";
 $user = new Users();
 if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-    $login = $user->log_in($_SESSION["username"], $_SESSION["password"]);
-    if ($login) {
-        require_once "../Views/Articles/blog.php";
-    }
+    require_once "../Views/Articles/blog.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] = "register") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
         $errors = 0;
@@ -26,19 +24,22 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
             echo "<p>Invalid password.</p>";
             $errors++;
         }
-        if ($errors == 0){
-            $create = $user->create_user($_POST["username"], $_POST["password"], $_POST["email"]);
+        if ($errors == 0) {
+            $create = $user->create_user($_POST["username"], md5($_POST["password"]), $_POST["email"]);
             if ($create) {
-                require_once "../Views/Users/connexion.php";;
+                header("Location: UsersController.php");
             }
         }
     }
     require_once "../Views/Users/registration.php";
+} elseif (isset($_GET["action"]) && $_GET["action"] = "logout") {
+    $user->logout();
+    header("Location: UsersController.php");
 } else {
     if (isset($_POST["username_connect"]) && isset($_POST["password_connect"])) {
         $login = $user->log_in($_POST["username_connect"], $_POST["password_connect"]);
         if ($login) {
-            require_once "../Views/Articles/blog.php";
+            header("Location: UsersController.php");
         }
     }
     require_once "../Views/Users/connexion.php";
