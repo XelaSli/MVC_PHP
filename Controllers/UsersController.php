@@ -7,7 +7,8 @@ class UsersController
     private static $user;
     private static $userController;
 
-    private function __construct(){}
+    private function __construct()
+    {}
 
     public static function getUsersController()
     {
@@ -57,11 +58,28 @@ class UsersController
 
 $userController = UsersController::getUsersController();
 if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-    if (isset($_GET["action"]) && $_GET["action"] = "logout") {
-        $user->log_out();
+    if (isset($_GET["action"]) && $_GET["action"] == "logout") {
+        $userController::getUser()->log_out();
+        require_once "../Views/Articles/blog.php";
+    } elseif (isset($_GET["action"]) && $_GET["action"] == "profile") {
+        $id = $userController::getUser()->getUserId($_SESSION["username"]);
+        $data = $userController::getUser()->display_user($id);
+        require_once "../Views/Users/profile.php";
     }
-    require_once "../Views/Articles/blog.php";
-} elseif (isset($_GET["action"]) && $_GET["action"] = "register") {
+    elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
+        $id = $userController::getUser()->getUserId($_SESSION["username"]);
+        if ($id == $_GET["id"]){
+        $userController::getUser()->delete_user($_GET["id"]);   
+        $userController::getUser()->log_out();
+        }
+        else{
+            echo "<p>You can't delete other users!</p>";
+        }
+    } else {
+        require_once "../Views/Articles/blog.php";
+    }
+
+} elseif (isset($_GET["action"]) && $_GET["action"] == "register") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
         $userController::register($_POST["username"], $_POST["password"], $_POST["password_confirmation"], $_POST["email"]);
         // $errors = 0;
@@ -92,7 +110,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
     require_once "../Views/Users/registration.php";
 } else {
     if (isset($_POST["username_connect"]) && isset($_POST["password_connect"])) {
-        $login = $user->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
+        $login = $userController::getUser()->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
         if ($login) {
             header("Location: UsersController.php");
         }

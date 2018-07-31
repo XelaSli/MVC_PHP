@@ -23,6 +23,15 @@ class Users
 
     }
 
+    public function getUserId($username)
+    {
+        $sql = "SELECT id FROM users WHERE username= ?";
+        $req = $this->database->prepare($sql);
+        $req->execute(array($username));
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return $res["id"];
+    }
+
     public function display_user($id)
     {
         $sql = "SELECT * FROM users WHERE id= ?";
