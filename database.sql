@@ -14,3 +14,16 @@ CREATE TABLE `users` (
   `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+  CREATE TABLE IF NOT EXISTS `articles` (
+  `id` SERIAL,
+  `user_id` varchar(255) NOT NULL,
+  `title` text DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `category` tinyint(4) DEFAULT NULL,
+  `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
