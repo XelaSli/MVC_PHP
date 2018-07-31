@@ -69,8 +69,9 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
     elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         if ($id == $_GET["id"]){
-        $userController::getUser()->delete_user($_GET["id"]);   
-        $userController::getUser()->log_out();
+        $userController::getUser()->delete_user($_GET["id"]);
+        sleep(3);
+        //$userController::getUser()->log_out();
         }
         else{
             echo "<p>You can't delete other users!</p>";
@@ -113,6 +114,9 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
         $login = $userController::getUser()->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
         if ($login) {
             header("Location: UsersController.php");
+        }
+        else{
+            echo "<p>Invalid username and/or password.</p>";
         }
     }
     require_once "../Views/Users/connexion.php";

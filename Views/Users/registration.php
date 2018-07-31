@@ -1,7 +1,7 @@
 <?php $title = "Registration"; ?>
 
 <?php ob_start(); ?>
-<form method="post" action="../UsersController.php?action=register">
+<form method="post" action="UsersController.php?action=register">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>

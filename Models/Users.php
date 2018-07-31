@@ -66,6 +66,8 @@ class Users
         $sql = "DELETE FROM users WHERE id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
+        echo "<p>The account has been deleted.</p>";
+        echo "<p><a href='UsersController.php?action=logout'>OK</a></p>";
     }
 
     public function log_in($username, $password)
@@ -74,7 +76,6 @@ class Users
         $req->execute(array(":username" => $username));
         $res = $req->fetch();
         if (!$res) {
-            echo "Invalid email/password.";
             return false;
         } else {
             if ($res["password"] == $password) {
@@ -82,10 +83,8 @@ class Users
                 $_SESSION['password'] = $res['password'];
                 return true;
             } else {
-                echo "Invalid email/password.";
                 return false;
             }
-
         }
     }
 
