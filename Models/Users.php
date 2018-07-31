@@ -35,19 +35,25 @@ class Users
     public function create_user($username,$password,$email)
     {
         
-        $sql = "INSERT INTO users (username,password,email) VALUES(?, ?, ?) ";
+        $sql = "INSERT INTO users (username,password,email,`group`,banned) VALUES(?, ?, ?, 0, 1)";
         $req=$this->database->prepare($sql);
-        $req->execute(array($username,$password,$email));
+        $res = $req->execute(array($username,$password,$email));
         echo "User created";
     }
     
-    public function edit_user($id,$username=null)
+    public function edit_user($id,$username=null,$password=null,$email=null)
     {
-        
+        $sql= "UPDATE users SET username= ?, password= ?, email = ?, edition_date = NOW() WHERE id= ?";
+        $req= $this->database->prepare($sql);
+        $req->execute(array($username,$password,$email,$id));
+        echo "Update successfull.";   
     }
     
     public function delete_user($id)
     {
-        
+        $sql="DELETE FROM users WHERE id=?";
+        $req=$this->database->prepare($sql);
+        $req->execute(array($id));
+        echo"Delete Successfull.";
     }
 }
