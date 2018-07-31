@@ -60,7 +60,7 @@ class Users
     public function log_in($username, $password)
     {
         $req = $this->database->prepare("SELECT username, password FROM users WHERE username=:username;");
-        $req>execute(array(":username" => $username));
+        $req->execute(array(":username" => $username));
         $res = $req->fetch();
         if (!$res) {
             echo "Invalid email/password.";
