@@ -33,26 +33,26 @@ class Article
         return $res; 
     }
     
-    public function create_article($username,$password,$email)
+    public function create_article($title, $content=null)
     {
         
-        $sql = "INSERT INTO articles (username,password,email,`group`,banned) VALUES(?, ?, ?, 0, 1)";
+        $sql = "INSERT INTO articles (title,content) VALUES(?, ?)";
         $req=$this->database->prepare($sql);
-        $res = $req->execute(array($username,$password,$email));
+        $res = $req->execute(array($title,$content));
         echo "Article created";
     }
     
-    public function edit_article($id,$username=null,$password=null,$email=null)
+    public function edit_article($id,$title=null,$content=null)
     {
-        $sql= "UPDATE users SET username= ?, password= ?, email = ?, edition_date = NOW() WHERE id= ?";
+        $sql= "UPDATE articles SET title= ?, content= ?, edition_date = NOW() WHERE id= ?";
         $req= $this->database->prepare($sql);
-        $req->execute(array($username,$password,$email,$id));
+        $req->execute(array($title,$description,$id));
         echo "Update article successfull.";   
     }
     
     public function delete_article($id)
     {
-        $sql="DELETE FROM users WHERE id=?";
+        $sql="DELETE FROM articles WHERE id=?";
         $req=$this->database->prepare($sql);
         $req->execute(array($id));
         echo"Delete article Successfull.";
