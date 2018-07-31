@@ -1,7 +1,7 @@
 <?php $title = "Registration"; ?>
 
 <?php ob_start(); ?>
-<form method="post">
+<form method="post" id="noMenu">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>
