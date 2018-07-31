@@ -18,14 +18,14 @@ class Users
         $sql="SELECT * FROM users";
         $req=$this->database->query($sql);
         $res=$req->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($req);
+    
         return $res;
     
     }
     
     public function display_user($id)
     {
-        $sql="SELECT * FROM userss WHERE id= ?";
+        $sql="SELECT * FROM users WHERE id= ?";
         $req =$this->database->prepare($sql);
         $req->execute(array($id));
         $res = $req->fetch(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ class Users
         $sql= "UPDATE users SET username= ?, password= ?, email = ?, edition_date = NOW() WHERE id= ?";
         $req= $this->database->prepare($sql);
         $req->execute(array($username,$password,$email,$id));
-        echo "Update successfull.";   
+        echo "Update User successfull.";   
     }
     
     public function delete_user($id)
@@ -54,12 +54,12 @@ class Users
         $sql="DELETE FROM users WHERE id=?";
         $req=$this->database->prepare($sql);
         $req->execute(array($id));
-        echo"Delete Successfull.";
+        echo"Delete User Successfull.";
     }
 
     public function log_in($username, $password)
     {
-        $req = $database->prepare("SELECT username, password FROM users WHERE username=:username;");
+        $req = $this->database->prepare("SELECT username, password FROM users WHERE username=:username;");
         $req>execute(array(":username" => $username));
         $res = $req->fetch();
         if (!$res) {
