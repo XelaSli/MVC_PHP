@@ -3,6 +3,9 @@ session_start();
 require_once "../Models/Users.php";
 $user = new Users();
 if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
+    if (isset($_GET["action"]) && $_GET["action"] = "logout") {
+        $user->log_out();
+    } 
     require_once "../Views/Articles/blog.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] = "register") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
@@ -32,12 +35,9 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
         }
     }
     require_once "../Views/Users/registration.php";
-} elseif (isset($_GET["action"]) && $_GET["action"] = "logout") {
-    $user->logout();
-    header("Location: UsersController.php");
 } else {
     if (isset($_POST["username_connect"]) && isset($_POST["password_connect"])) {
-        $login = $user->log_in($_POST["username_connect"], $_POST["password_connect"]);
+        $login = $user->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
         if ($login) {
             header("Location: UsersController.php");
         }
