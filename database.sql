@@ -14,29 +14,34 @@ CREATE TABLE `users` (
   `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `articles`;
 
 CREATE TABLE IF NOT EXISTS `articles` (
-`id` SERIAL,
-`user_id` tinyint(4) NOT NULL,
-`title` text DEFAULT NULL,
-`content` text DEFAULT NULL,
-`category_id` tinyint(4) DEFAULT NULL,
-`creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
-`edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` SERIAL,
+  `user_id` tinyint(4) NOT NULL,
+  `title` text DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `category_id` tinyint(4) DEFAULT NULL,
+  `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `categories`;
 
 CREATE TABLE IF NOT EXISTS `categories` (
-`id` SERIAL,
-`category` text NOT NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` SERIAL,
+  `category` text DEFAULT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE IF NOT EXISTS `comments` (
-`id` SERIAL,
-`user_id` tinyint(4) NOT NULL,
-`article_id` tinyint(4) NOT NULL,
-`content` text DEFAULT NULL,
-`creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` SERIAL,
+  `user_id` tinyint(4) NOT NULL,
+  `article_id` tinyint(4) NOT NULL,
+  `content` text DEFAULT NULL,
+  `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
