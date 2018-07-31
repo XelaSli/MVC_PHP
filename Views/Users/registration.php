@@ -18,5 +18,10 @@
 </form>
 <?php $content = ob_get_clean(); ?>
 
+<<<<<<< HEAD
 <?php require_once("template.php");
 ?>
+=======
+<?php require_once("../Views/template.php");
+?>
+>>>>>>> 3b9821d9b1b11c81b52feeb050cc54607085e820
