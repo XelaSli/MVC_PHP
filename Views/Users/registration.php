@@ -1,12 +1,12 @@
 <?php $title = "Registration"; ?>
 
 <?php ob_start(); ?>
-<form method="post">
+<form method="post" action="UsersController.php?action=register">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>
     <label for="email">Email:   </label>
-    <input type="email" id="email" name="email" placeholder="email" required>
+    <input type="text" id="email" name="email" placeholder="email" required>
     <br><br>
     <label for="password">Password:   </label>
     <input type="password" id="password" name="password" placeholder="password" required>
