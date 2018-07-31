@@ -16,7 +16,7 @@ class Article
 
     public function display_articles()
     {
-        $sql="SELECT * FROM articles";
+        $sql="SELECT * FROM articles ORDER BY creation_date DESC";
         $req=$this->database->query($sql);
         $res=$req->fetchAll(PDO::FETCH_ASSOC);
    

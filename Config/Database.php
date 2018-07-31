@@ -17,7 +17,6 @@ class Database
         try{
             $this->connection = new PDO($this->dsn,$this->username,$this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
         }
         catch(PDOException $e)
         {
