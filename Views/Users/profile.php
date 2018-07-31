@@ -1,6 +1,7 @@
 <?php $title = "Profile"; ?>
 
 <?php ob_start(); ?>
+<header><?php include_once('menu.php'); ?></header>
 <form method="get">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" readonly>

@@ -1,7 +1,7 @@
 <?php $title = "Log in"; ?>
 
 <?php ob_start(); ?>
-<form method="post" id="noMenu">
+<form method="post">
 <label for="username">Username: </label>
 <input type="text" id="username" name="username" required /><br /><br />
 
