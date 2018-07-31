@@ -56,4 +56,25 @@ class Users
         $req->execute(array($id));
         echo"Delete Successfull.";
     }
+
+    public function log_in($username, $password)
+    {
+        $req = $database->prepare("SELECT username, password FROM users WHERE username=:username;");
+        $req>execute(array(":username" => $username));
+        $res = $req->fetch();
+        if (!$res) {
+            echo "Invalid email/password.";
+            return false;
+        } else {
+            if ($res["password"]== $password) {
+                $_SESSION['usernaname']=$res['username'];
+                $_SESSION['password']=$res['password'];
+                return true;
+            } else {
+                echo "Invalid email/password.";
+                return false;
+            }
+
+        }
+    }
 }
