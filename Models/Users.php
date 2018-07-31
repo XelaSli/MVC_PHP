@@ -38,7 +38,7 @@ class Users
         $sql = "INSERT INTO users (username,password,email,`group`,banned) VALUES(?, ?, ?, 0, 1)";
         $req=$this->database->prepare($sql);
         $res = $req->execute(array($username,$password,$email));
-        echo "User created";
+        
     }
     
     public function edit_user($id,$username=null,$password=null,$email=null)
@@ -46,7 +46,7 @@ class Users
         $sql= "UPDATE users SET username= ?, password= ?, email = ?, edition_date = NOW() WHERE id= ?";
         $req= $this->database->prepare($sql);
         $req->execute(array($username,$password,$email,$id));
-        echo "Update User successfull.";   
+       
     }
     
     public function delete_user($id)
@@ -54,7 +54,7 @@ class Users
         $sql="DELETE FROM users WHERE id=?";
         $req=$this->database->prepare($sql);
         $req->execute(array($id));
-        echo"Delete User Successfull.";
+        
     }
     
     public function log_in($username, $password)
@@ -77,6 +77,17 @@ class Users
             
         }
     }
+    
+    public function get_group($id)
+    {
+        $sql="SELECT 'group' FROM users WHERE id= ?";
+        $req =$this->database->prepare($sql);
+        $req->execute(array($id));
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return $res;
+    }
+    
+    
     
     public function user_exist($username, $id = "")
     {
