@@ -2,14 +2,15 @@
 
 <?php ob_start(); ?>
 <form method="post">
-<label for="username">Username: </label>
-<input type="text" id="username" name="username" required /><br /><br />
+<label for="username_connect">Username: </label>
+<input type="text" id="username_connect" name="username_connect" required /><br /><br />
 
-<label for="password">Password: </label>
-<input type="password" id="password" name="password" required /><br /><br />
+<label for="password_connect">Password: </label>
+<input type="password" id="password_connect" name="password_connect" required /><br /><br />
 
 <input type="submit" value="Log in" />
 </form>
+<p><a href="UsersController.php?action=register">Not registered yet?</a></p>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("template.php");
