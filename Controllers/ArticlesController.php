@@ -70,7 +70,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     $tags = $tags_object->getTags();
     $cats = $category_object->getCategories();
     require_once "../Views/Articles/addArticle.php";
-} elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
+} elseif (isset($_GET["action"]) && $_GET["action"] == "delete_article") {
+    $articleController->getArticle()->delete_article($_GET["id"]);
+}
+ elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
     $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
     $articleController->getArticle()->create_article($_POST);
     header("Location: UsersController.php");
