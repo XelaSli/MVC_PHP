@@ -65,12 +65,17 @@ $articleList = $articleController->displayArticleList();
 $category_object = new Categories();
 $tags_object = new Tags();
 
-if (isset($_GET["action"]) && $_GET["action"] == "create"){
+if (isset($_GET["action"]) && $_GET["action"] == "create_article"){
     $tags = $tags_object->getTags();
     $cats = $category_object->getCategories();
     require_once("../Views/Articles/addArticle.php");
 }
-elseif (isset($_POST["title_article"]) && isset($_POST["content_article"])){
-
+elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["content_article"])){
+    var_dump($_POST);
+foreach($_POST as $val){
+    if (preg_match("#\##", $val)){
+//add tags to the article
+    }
+}
 }
 require_once("../Views/Articles/blog.php");

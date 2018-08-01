@@ -32,8 +32,11 @@ class Categories{
         return ($res);
     }
 
-    public function getCatName($cat)
+    public function getCatID($cat)
     {
-
+        $req = $this->database->prepare("SELECT id FROM categories WHERE category=:category;");
+        $req->execute(array(":category" => $cat));
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return ($res);
     }
 }

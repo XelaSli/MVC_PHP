@@ -10,7 +10,7 @@
 <textarea id="content_article" name="content_article" required></textarea><br /><br />
 
 <label for="category_select">Category: </label>
-<select id="category_select" name="category_select">
+<select id="category_select" name="category_select" required >
 <option value=""></option>
 <?php
 foreach ($cats as $cat){
@@ -27,6 +27,7 @@ foreach($tags as $tag){
 }
 ?>
 <br /><br />
+<input type="hidden" value="<?= $_SESSION["username"] ?>" name="author" id="author" />
 <input type="submit" value="Add" />
 </form>
 <p><a href="UsersController.php">Back</a></p>

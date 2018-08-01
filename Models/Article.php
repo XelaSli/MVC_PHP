@@ -34,11 +34,9 @@ class Article
         return $res;
     }
 
-    public function create_article($title, $content = null, $cat = null)
+    public function create_article($title, $content, $cat)
     {
-        if ($cat != null) {
-            $cat = getCatName($cat);
-        }
+        $cat = new Categories();
         $sql = "INSERT INTO articles (title,content, category_id) VALUES(?, ?, ?)";
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($title, $content, $cat));
