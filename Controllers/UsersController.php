@@ -60,7 +60,7 @@ $userController = UsersController::getUsersController();
 if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
     if (isset($_GET["action"]) && $_GET["action"] == "logout") {
         $userController::getUser()->log_out();
-        require_once "../Views/Articles/blog.php";
+        header("Location: UsersController.php");
     } elseif (isset($_GET["action"]) && $_GET["action"] == "profile") {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         $data = $userController::getUser()->display_user($id);
@@ -70,14 +70,12 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         if ($id == $_GET["id"]){
         $userController::getUser()->delete_user($_GET["id"]);
-        sleep(3);
-        //$userController::getUser()->log_out();
         }
         else{
             echo "<p>You can't delete other users!</p>";
         }
     } else {
-        require_once "../Views/Articles/blog.php";
+        require_once "ArticlesController.php";
     }
 
 } elseif (isset($_GET["action"]) && $_GET["action"] == "register") {
