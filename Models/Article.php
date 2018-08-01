@@ -33,7 +33,8 @@ class Article
         return $res;
     }
 
-    public function display_article_tags($article_id){
+    public function display_article_tags($article_id)
+    {
         $sql = "SELECT tag FROM tags INNER JOIN links ON tags.id = tag_id WHERE article_id =?";
         $req = $this->database->prepare($sql);
         $req->execute(array($article_id));
@@ -42,12 +43,32 @@ class Article
 
     }
 
-    public function create_article($title, $content, $cat, $user)
+    // public function create_article($title, $content, $cat, $user)
+    // {
+    //     $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
+    //     $req = $this->database->prepare($sql);
+    //     $res = $req->execute(array($title, $content, $cat, $user));
+    //     echo "Article created";
+    // }
+
+    public function create_article($data)
     {
+        $title = $data["title_article"];
+        $content = $data["content_article"];
+        $cat = $data["category_select"];
+        $user = $data["author"];
         $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($title, $content, $cat, $user));
         echo "Article created";
+        foreach ($_POST as $val) {
+            if (preg_match("#\##", $val)) {
+                $tags_object = new Tags();
+                $article_id = SELF::getLatestId();
+                $tag_id = $tags_object->getTagId($val);
+                $tags_object->assign_tags($tag_id, $article_id);
+            }
+        }
     }
 
     public function edit_article($id, $title = null, $content = null)
@@ -66,7 +87,8 @@ class Article
         echo "Article successfully deleted.";
     }
 
-    public function getLatestId(){
+    public function getLatestId()
+    {
         $sql = "SELECT id FROM articles ORDER BY id DESC LIMIT 1";
         $req = $this->database->query($sql);
         $res = $req->fetch(PDO::FETCH_ASSOC);

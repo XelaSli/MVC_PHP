@@ -12,7 +12,7 @@ class Tags{
 
     public function getTags()
     {
-        $sql = "SELECT tag FROM tags;";
+        $sql = "SELECT tag FROM tags ORDER BY tag;";
         $req = $this->database->query($sql);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return ($res);

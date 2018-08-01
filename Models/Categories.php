@@ -35,7 +35,7 @@ class Categories{
 
     public function getCategories()
     {
-        $sql = "SELECT category FROM categories;";
+        $sql = "SELECT category FROM categories ORDER BY category;";
         $req = $this->database->query($sql);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return ($res);
