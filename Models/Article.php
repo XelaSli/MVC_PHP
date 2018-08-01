@@ -33,7 +33,14 @@ class Article
         return $res;
     }
 
+    public function display_article_tags($article_id){
+        $sql = "SELECT tag FROM tags INNER JOIN links ON tags.id = tag_id WHERE article_id =?";
+        $req = $this->database->prepare($sql);
+        $req->execute(array($article_id));
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
 
+    }
 
     public function create_article($title, $content, $cat, $user)
     {
