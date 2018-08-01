@@ -69,6 +69,9 @@ class UsersController
         elseif (isset($_GET["action"]) && $_GET["action"] == "create_article") {
             require_once "ArticlesController.php";
         }
+        elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
+            require_once "AdminController.php";
+        }
         elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
             $id = $userController::getUser()->getUserId($_SESSION["username"]);
             if ($id == $_GET["id"]){

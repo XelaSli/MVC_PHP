@@ -55,10 +55,11 @@ class AdminController
         }
         
         if ($errors == 0) {
+            
             SELF::getAdmin();
             $create = SELF::$admin->create_user($username, md5($password), $email,$group);
             if ($create) {
-                header("Location: AdminController.php");
+                header("Location: UserController.php?action=admin");
             }
         }
     }
@@ -66,9 +67,10 @@ class AdminController
 $adminController = AdminController::getAdminController();
 $userList = $adminController->displayUserList();
 
-if (isset($_GET["action"]) && $_GET["action"] == "create"){
+if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
    
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
+        var_dump($_POST);
         $adminController::register($_POST["username"], $_POST["password"], $_POST["password_confirmation"], $_POST["email"], $_POST["group"]);
         
     }
