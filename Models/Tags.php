@@ -17,6 +17,15 @@ class Tags{
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return ($res);
     }
+
+    public function getArticleTags($id)
+    {
+        $sql = "SELECT tags.tag FROM tags INNER JOIN links ON tags.id = links.tag_id WHERE links.article_id = :id;";
+        $req = $this->database->prepare($sql);
+        $req->execute(array(":id"=>$id));
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        return ($res);
+    }
     
     public function create_tags($tags)
     {

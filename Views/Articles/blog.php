@@ -25,6 +25,16 @@ if ($article["creation_date"] != $article["edition_date"]) {
     ?>
     <p>Category: <?= $category_object->getCategory($article["category_id"]) ?></p>
 <?php
+$tags = $tags_object->getArticleTags($article["id"]);
+if ($tags != false){
+    echo "Tags: ";
+    foreach($tags as $tag){
+        echo $tag["tag"] . " ";
+    }
+}
+?>
+<p><a href="UsersController.php?action=edit_article&amp;id=<?= $article["id"] ?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?= $article["id"] ?>">Delete article</a></p>
+<?php
 }
 ?>
 <?php $content = ob_get_clean();?>

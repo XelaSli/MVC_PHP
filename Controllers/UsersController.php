@@ -89,6 +89,10 @@ class UsersController
         {
             require_once "AdminController.php";
         }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'delete_article')
+        {
+            require_once "ArticlesController.php";
+        }
         else {
             require_once "ArticlesController.php";
         }
