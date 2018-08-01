@@ -9,11 +9,14 @@
 <label for="content_article">Content: </label>
 <textarea id="content_article" name="content_article" required></textarea><br /><br />
 
-<label for="category_add">Add a new category: </label>
-<input type="text" id="category_add" name="category_add" />
-<label for="category_select"> Or select one: </label>
+<label for="category_select">Select a category: </label>
 <select id="category_select" name="category_select">
 <option value=""></option>
+<?php
+foreach ($cats as $cat){
+    echo "<option value='" . $cat["category"] . "'>" . $cat["category"] . "</option>";
+}
+?>
 </select><br /><br />
 
 <label for="article_tags">Tags: </label>
