@@ -43,7 +43,7 @@ class Tags{
 
     public function assign_tags($tag_id, $article_id)
     {
-        $sql= "INSERT INTO links(tag_id, article_id) VALUES (tag_id=:tag_id, article_id=:article_id)";
+        $sql= "INSERT INTO links(tag_id, article_id) VALUES (:tag_id, :article_id)";
         $req = $this->database->prepare($sql);
         $req->execute(array(":tag_id" => $tag_id, ":article_id" => $article_id));
     }

@@ -41,7 +41,6 @@ class Article
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($title, $content, $cat, $user));
         echo "Article created";
-        header("Location: UsersController.php");
     }
 
     public function edit_article($id, $title = null, $content = null)
@@ -58,5 +57,12 @@ class Article
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         echo "Article successfully deleted.";
+    }
+
+    public function getLatestId(){
+        $sql = "SELECT id FROM articles ORDER BY id DESC LIMIT 1";
+        $req = $this->database->query($sql);
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return ($res["id"]);
     }
 }

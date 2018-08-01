@@ -74,11 +74,16 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
     $add = $articleController->getArticle()->create_article($_POST["title_article"], $_POST["content_article"], $_POST["category_select"], $_POST["author"]);
     if ($add) {
+        $article_id = $articleController->getArticle()->getLatestId();
         foreach ($_POST as $val) {
             if (preg_match("#\##", $val)) {
+                echo $val;
 //add tags to the article
+                $tag_id = $tags_object->getTagId($val);
+                $tags_object->assign_tags($tag_id, $article_id);
             }
-        }
+        } 
     }
+    //header("Location: UsersController.php");
 }
-require_once "../Views/Articles/blog.php";
+//require_once "../Views/Articles/blog.php";
