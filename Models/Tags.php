@@ -32,18 +32,26 @@ class Tags{
         }
     }
 
-    public function delete_tags($id)
+    public function delete_tag($id)
     {
         $sql= "DELETE FROM tags WHERE id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         echo "<p>This tag has been deleted.</p>";
         echo "<p><a href=''>OK</a></p>";
-
     }
 
     public function assign_tags($tag_id, $article_id)
     {
+        $sql= "INSERT INTO links(tag_id, article_id) VALUES (tag_id=:tag_id, article_id=:article_id)";
+        $req = $this->database->prepare($sql);
+        $req->execute(array(":tag_id" => $tag_id, ":article_id" => $article_id));
+    }
 
+    public function getTagId($tag){
+        $req = $this->database->prepare("SELECT id FROM tags WHERE tag=:tag;");
+        $req->execute(array(":tag" => $tag));
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return ($res['id']);
     }
 }
