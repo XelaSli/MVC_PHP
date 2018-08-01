@@ -27,7 +27,7 @@ foreach($tags as $tag){
 }
 ?>
 <br /><br />
-<input type="hidden" value="<?= $_SESSION["username"] ?>" name="author" id="author" />
+<input type="hidden" value="<?= $userController::getUser()->getUserId($_SESSION["username"]); ?>" name="author" id="author" />
 <input type="submit" value="Add" />
 </form>
 <p><a href="UsersController.php">Back</a></p>

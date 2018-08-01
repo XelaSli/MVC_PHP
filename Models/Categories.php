@@ -46,6 +46,6 @@ class Categories{
         $req = $this->database->prepare("SELECT id FROM categories WHERE category=:category;");
         $req->execute(array(":category" => $cat));
         $res = $req->fetch(PDO::FETCH_ASSOC);
-        return ($res('id'));
+        return ($res['id']);
     }
 }
