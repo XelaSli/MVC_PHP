@@ -32,7 +32,7 @@ class Tags{
         }
     }
 
-    public function assign_tags($tags)
+    public function assign_tags($tag_id, $article_id)
     {
 
     }
