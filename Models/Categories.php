@@ -41,6 +41,15 @@ class Categories{
         return ($res);
     }
 
+    public function getCategory($id)
+    {
+        $sql = "SELECT category FROM categories WHERE id = :id;";
+        $req = $this->database->prepare($sql);
+        $req->execute(array(":id"=>$id));
+        $res = $req->fetch(PDO::FETCH_ASSOC);
+        return ($res["category"]);
+    }
+
     public function getCatID($cat)
     {
         $req = $this->database->prepare("SELECT id FROM categories WHERE category=:category;");

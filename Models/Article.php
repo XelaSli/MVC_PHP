@@ -17,7 +17,8 @@ class Article
 
     public function display_articles()
     {
-        $sql = "SELECT * FROM articles ORDER BY creation_date DESC";
+        $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles ORDER BY creation_date DESC";
+        //$sql = "SELECT * FROM articles ORDER BY creation_date DESC";
         $req = $this->database->query($sql);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,7 +27,8 @@ class Article
 
     public function display_article($id)
     {
-        $sql = "SELECT * FROM articles WHERE id= ?";
+        // $sql = "SELECT articles.id, articles.title, articles.content, articles.creation_date, articles.edition_date, categories.category, users.username FROM categories INNER JOIN articles ON articles.category_id = categories.id INNER JOIN users ON articles.user_id = users.id WHERE articles.id= ?";
+        $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles WHERE articles.id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         $res = $req->fetch(PDO::FETCH_ASSOC);
@@ -43,18 +45,10 @@ class Article
 
     }
 
-    // public function create_article($title, $content, $cat, $user)
-    // {
-    //     $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
-    //     $req = $this->database->prepare($sql);
-    //     $res = $req->execute(array($title, $content, $cat, $user));
-    //     echo "Article created";
-    // }
-
     public function create_article($data)
     {
         $title = $data["title_article"];
-        $content = $data["content_article"];
+        $content = nl2br($data["content_article"]);
         $cat = $data["category_select"];
         $user = $data["author"];
         $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
