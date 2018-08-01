@@ -9,10 +9,10 @@
 <input type="text" id="email" name="email" value="<?php echo $user['email'] ?>" placeholder="email" required>
 <br><br>
 <label for="group">Group:   </label>
-<select id="group" name="group" value="<?php echo $user['group']?> ">
-<option>User</option>
-<option>Writer</option>
-<option>Admin</option>
+<select id="group" name="group" >
+<option <?php if($user['group'] =='User') echo 'selected';?> value= "User">User</option>
+<option <?php if($user['group'] =='Writer') echo 'selected';?> value= "Writer">Writer</option>
+<option <?php if($user['group'] =='Admin') echo 'selected';?> value= "Admin">Admin</option>
 </select>
 <br><br><?php
 if ($user["banned"]=='yes') {
