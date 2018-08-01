@@ -32,6 +32,16 @@ class Tags{
         }
     }
 
+    public function delete_tags($id)
+    {
+        $sql= "DELETE FROM tags WHERE id=?";
+        $req = $this->database->prepare($sql);
+        $req->execute(array($id));
+        echo "<p>This tag has been deleted.</p>";
+        echo "<p><a href=''>OK</a></p>";
+
+    }
+
     public function assign_tags($tag_id, $article_id)
     {
 

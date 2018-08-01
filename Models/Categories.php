@@ -24,14 +24,13 @@ class Categories{
         }
     }
 
-    public function delete_category($id){
-
+    public function delete_category($id)
+    {
         $sql="DELETE FROM categories WHERE id=?";
         $req=$this->database->prepare($sql);
         $req->execute(array($id));
         echo "<p>The category has been deleted.</p>";
         echo "<p><a href=''>OK</a></p>";
-
     }
 
     public function getCategories()
