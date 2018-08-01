@@ -8,8 +8,8 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `group` tinyint(4) DEFAULT NULL,
-  `banned` tinyint(4) DEFAULT NULL,
+  `group` varchar(10) DEFAULT NULL,
+  `banned` varchar(10) DEFAULT NULL,
   `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
