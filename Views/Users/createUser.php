@@ -1,7 +1,7 @@
 <?php $title = "Create User"; ?>
 
 <?php ob_start(); ?>
-<form method="post" action="../AdminController.php?action=create">
+<form method="post" action="AdminController.php?action=create_user">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>
@@ -10,9 +10,10 @@
     <br><br>
     <label for="group">Group:   </label>
     <select id="group" name="group" required>
-    <option selected>User</option>
-    <option>Writer</option>
-    <option>Administrator</option>
+    <option  value= "0" selected>User</option>
+    <option value="1">Writer</option>
+    <option value ="2">Administrator</option>
+    <?php var_dump($_POST['username']) ?>
     </select>
     <br><br>
     <label for="password">Password:   </label>

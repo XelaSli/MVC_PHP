@@ -34,13 +34,13 @@ class Article
         return $res;
     }
 
-    public function create_article($title, $content, $cat)
+    public function create_article($title, $content, $cat, $user)
     {
-        $cat = new Categories();
-        $sql = "INSERT INTO articles (title,content, category_id) VALUES(?, ?, ?)";
+        $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
         $req = $this->database->prepare($sql);
-        $res = $req->execute(array($title, $content, $cat));
+        $res = $req->execute(array($title, $content, $cat, $user));
         echo "Article created";
+        header("Location: UsersController.php");
     }
 
     public function edit_article($id, $title = null, $content = null)

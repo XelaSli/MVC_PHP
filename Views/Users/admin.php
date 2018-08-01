@@ -6,7 +6,7 @@ foreach($userList as $values)
 ?>
 <h1>Admin</h1>
 <form method="get" action="AdminController.php">
-<input type="hidden" value="create" id="action" name="action" />
+<input type="hidden" value="create_user" id="action" name="action" />
 <input type="submit" value="Add a new user" />
 </form>
 <table>

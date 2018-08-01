@@ -25,7 +25,8 @@ class ArticleController
         return self::$article;
     }
 
-    public function displayArticleList(){
+    public function displayArticleList()
+    {
         $articleList = SELF::getArticle()->display_articles();
 
         return ($articleList);
@@ -65,17 +66,19 @@ $articleList = $articleController->displayArticleList();
 $category_object = new Categories();
 $tags_object = new Tags();
 
-if (isset($_GET["action"]) && $_GET["action"] == "create_article"){
+if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     $tags = $tags_object->getTags();
     $cats = $category_object->getCategories();
-    require_once("../Views/Articles/addArticle.php");
-}
-elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["content_article"])){
-    var_dump($_POST);
-foreach($_POST as $val){
-    if (preg_match("#\##", $val)){
+    require_once "../Views/Articles/addArticle.php";
+} elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
+    $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
+    $add = $articleController->getArticle()->create_article($_POST["title_article"], $_POST["content_article"], $_POST["category_select"], $_POST["author"]);
+    if ($add) {
+        foreach ($_POST as $val) {
+            if (preg_match("#\##", $val)) {
 //add tags to the article
+            }
+        }
     }
 }
-}
-require_once("../Views/Articles/blog.php");
+require_once "../Views/Articles/blog.php";
