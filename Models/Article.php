@@ -22,7 +22,6 @@ class Article
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
         return $res;
-
     }
 
     public function display_article($id)
@@ -33,6 +32,8 @@ class Article
         $res = $req->fetch(PDO::FETCH_ASSOC);
         return $res;
     }
+
+
 
     public function create_article($title, $content, $cat, $user)
     {
