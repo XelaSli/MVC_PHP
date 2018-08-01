@@ -43,5 +43,20 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `tags`;
+
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` SERIAL,
+  `tag` text NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `links`;
+
+CREATE TABLE IF NOT EXISTS `links` (
+  `id` SERIAL,
+  `tag_id` tinyint(4) NOT NULL,
+  `article_id` tinyint(4) NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
