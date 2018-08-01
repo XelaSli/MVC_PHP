@@ -33,6 +33,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `category` text DEFAULT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Ajout de catégories
+INSERT INTO `categories` (`category`) VALUES("Kitchen"), ("Garden"), ("Leisure");
+
 DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE IF NOT EXISTS `comments` (
