@@ -1,8 +1,8 @@
 <?php $title = "Admin user"; ?>
 
 <?php ob_start(); 
-//var_dump($userList);
-foreach($userList as $values)
+
+
 ?>
 <h1>Admin</h1>
 <form method="get" action="AdminController.php">
@@ -19,6 +19,7 @@ foreach($userList as $values)
     <th>Action</th>
   </tr>
   <?php
+  foreach($userList as $values){
   echo "<tr><td>";
   echo $values['username']."</td><td>";
   echo $values['email']."</td><td>";
@@ -28,7 +29,7 @@ foreach($userList as $values)
   ?>
   <td><a href="UsersController.php?action=edit">Edit</a></td>
   <td><a href="">Delete</a></td>
-  </tr>
+  </tr><?php } ?>
 </table>
 <?php $content = ob_get_clean(); ?>
 

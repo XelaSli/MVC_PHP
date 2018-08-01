@@ -1,7 +1,7 @@
 <?php $title = "Edit User"; ?>
 
 <?php ob_start(); ?>
-<form method="post" action="../AdminController.php?action=edit">
+<form method="post" action="AdminController.php?action=edit">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>

@@ -13,7 +13,6 @@
     <option  value= "0" selected>User</option>
     <option value="1">Writer</option>
     <option value ="2">Administrator</option>
-    <?php var_dump($_POST['username']) ?>
     </select>
     <br><br>
     <label for="password">Password:   </label>
@@ -24,6 +23,7 @@
     <br><br>
     <button  type="submit" name="submit">Create</button>
 </form>
+<button  type="button" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../Views/template.php");?>
