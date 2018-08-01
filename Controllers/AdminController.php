@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "../Models/Users.php";
 
 class AdminController
