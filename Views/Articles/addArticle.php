@@ -9,7 +9,7 @@
 <label for="content_article">Content: </label>
 <textarea id="content_article" name="content_article" required></textarea><br /><br />
 
-<label for="category_select">Select a category: </label>
+<label for="category_select">Category: </label>
 <select id="category_select" name="category_select">
 <option value=""></option>
 <?php
@@ -19,9 +19,14 @@ foreach ($cats as $cat){
 ?>
 </select><br /><br />
 
-<label for="article_tags">Tags: </label>
-<input type="text" id="article_tags" name="article_tags" placeholder="Separate your tags with a space" /><br /><br />
-
+<label>Tags: </label>
+<?php
+foreach($tags as $tag){
+    echo "<input type='checkbox' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";
+    echo "<label for='" . $tag["tag"] . "' /> " . $tag["tag"] . "</label> ";
+}
+?>
+<br /><br />
 <input type="submit" value="Add" />
 </form>
 <p><a href="UsersController.php">Back</a></p>

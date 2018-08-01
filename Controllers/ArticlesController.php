@@ -63,13 +63,14 @@ class ArticleController
 $articleController = ArticleController::getArticleController();
 $articleList = $articleController->displayArticleList();
 $category_object = new Categories();
+$tags_object = new Tags();
 
 if (isset($_GET["action"]) && $_GET["action"] == "create"){
+    $tags = $tags_object->getTags();
     $cats = $category_object->getCategories();
     require_once("../Views/Articles/addArticle.php");
 }
 elseif (isset($_POST["title_article"]) && isset($_POST["content_article"])){
-    var_dump($_POST);
 
 }
 require_once("../Views/Articles/blog.php");

@@ -2,6 +2,7 @@
 
 include_once '../Config/Database.php';
 include_once '../Models/Categories.php';
+include_once '../Models/Tags.php';
 
 class Article
 {
@@ -58,24 +59,5 @@ class Article
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         echo "Article successfully deleted.";
-    }
-
-    public function create_tags($tags)
-    {
-        $tagList = explode(" ", $tags);
-        foreach ($tagList as $tag) {
-            $req = $this->database->prepare("SELECT tag FROM tags WHERE tag=:tag;");
-            $req->execute(array(":category" => $tag));
-            if ($req->fetch() == false) {
-                $req->closeCursor();
-                $req = $this->database->prepare("INSERT INTO tags(tag) VALUES(tag=:tag;");
-                $req->execute(array(":tag" => $tag));
-            }
-        }
-    }
-
-    public function assign_tags($tags)
-    {
-
     }
 }
