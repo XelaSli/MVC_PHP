@@ -14,6 +14,7 @@
     <th>Username</th>
     <th>Email</th>
     <th>Group</th>
+    <th>Banned</th>
     <th>Date of creation</th>
     <th>Last modification</th>
     <th>Action</th>
@@ -24,10 +25,11 @@
   echo $values['username']."</td><td>";
   echo $values['email']."</td><td>";
   echo $values['group']."</td><td>";
+  echo $values['banned']."</td><td>";
   echo $values['creation_date']."</td><td>";
   echo $values['edition_date']."</td>";
   ?>
-  <td><a href="UsersController.php?action=edit">Edit</a></td>
+  <td><a href="UsersController.php?action=edit_user&id=<?php echo $values['id']?>">Edit</a></td>
   <td><a href="">Delete</a></td>
   </tr><?php } ?>
 </table>

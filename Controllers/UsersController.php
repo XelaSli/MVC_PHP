@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "../Models/Users.php";
-
+//var_dump($_SESSION);
 class UsersController
 {
     private static $user;
@@ -70,6 +70,9 @@ class UsersController
             require_once "ArticlesController.php";
         }
         elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
+            require_once "AdminController.php";
+        }
+        elseif (isset($_GET["action"]) && $_GET["action"] == "edit_user") {
             require_once "AdminController.php";
         }
         elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
