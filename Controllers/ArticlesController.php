@@ -63,7 +63,10 @@ class ArticleController
 $articleController = ArticleController::getArticleController();
 $articleList = $articleController->displayArticleList();
 
-if (isset($_GET["action"]) && $_GET["action"] == create){
+if (isset($_GET["action"]) && $_GET["action"] == "create"){
     require_once("../Views/Articles/addArticle.php");
+}
+elseif (isset($_POST["title_article"]) && isset($_POST["content_article"])){
+
 }
 require_once("../Views/Articles/blog.php");
