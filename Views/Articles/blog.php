@@ -20,7 +20,7 @@ foreach ($articleList as $article) {
 <p><em>Written by <?= $userController::getUser()->display_user($article["user_id"])["username"] ?> on <?=$article["creation_date"]?></em></p>
 <?php
 if ($article["creation_date"] != $article["edition_date"]) {
-        echo "<p><em>Last modification: <?=" . $article["edition_date"] . "</em></p>";
+        echo "<p><em>Last modification: " . $article["edition_date"] . "</em></p>";
     }
     ?>
     <p>Category: <?= $category_object->getCategory($article["category_id"]) ?></p>

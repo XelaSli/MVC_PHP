@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` SERIAL,
   `category` text DEFAULT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+	
 -- Ajout de catégories
 INSERT INTO `categories` (`category`) VALUES("Kitchen"), ("Garden"), ("Leisure");
 

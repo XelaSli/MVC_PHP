@@ -66,12 +66,36 @@ class Article
         }
     }
 
-    public function edit_article($id, $title = null, $content = null)
+    public function edit_article($id, $data)
     {
-        $sql = "UPDATE articles SET title= ?, content= ?, edition_date = NOW() WHERE id= ?";
+        $title = $data["new_title"];
+        $content = nl2br($data["new_content"]);
+        $cat = $data["new_category"];
+        $sql = "UPDATE articles SET title= ?, content= ?, category_id = ?WHERE id= ?";
         $req = $this->database->prepare($sql);
-        $req->execute(array($title, $description, $id));
+        $req->execute(array($title, $content, $cat, $id));
         echo "Article successfully updated.";
+
+        foreach ($_POST["existing_tags"] as $val) {
+                if (preg_match("#\##", $val)) {
+                    if (!in_array($val, $data["existing_tags"])) {
+                        $tags_object = new Tags();
+                        $tag_id = $tags_object->getTagId($val);
+                        $tags_object->assign_tags($tag_id, $id);
+                    }
+                }
+            }
+
+
+        // foreach ($_POST as $val) {
+        //     if (preg_match("#\##", $val)) {
+        //         if (!in_array($val, $data["existing_tags"])) {
+        //             $tags_object = new Tags();
+        //             $tag_id = $tags_object->getTagId($val);
+        //             $tags_object->assign_tags($tag_id, $id);
+        //         }
+        //     }
+        // }
     }
 
     public function delete_article($id)
