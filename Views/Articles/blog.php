@@ -8,11 +8,10 @@
 <?php
 if ($_SESSION["group"] != "User") {?>
 <input type="submit" value="Add a new article" class="waves-effect waves-light btn"/>
-<?php }?>
-</form>
-<form method="get" action="UsersController.php">
+
 <input type="hidden" value="add_category" id="action" name="action" />
-<input type="submit" value="Create a new category" />
+<input type="submit" value="Create a new category" class="waves-effect waves-light btn"/>
+<?php }?>
 </form>
 <?php
 if (empty($articleList)) {
