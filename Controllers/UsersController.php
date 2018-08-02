@@ -66,7 +66,7 @@ class UsersController
             $data = $userController::getUser()->display_user($id);
             require_once "../Views/Users/profile.php";
         }
-        elseif (isset($_GET["action"]) && $_GET["action"] == "create_article") {
+        elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_article") && ($_SESSION["group"] != "User")) {
             require_once "ArticlesController.php";
         }
         elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
