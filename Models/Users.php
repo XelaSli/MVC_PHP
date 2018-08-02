@@ -54,11 +54,15 @@ class Users
         }
     }
 
-    public function edit_user($id, $username = null, $password = null, $email = null)
+    public function edit_user($id, $username, $email, $group, $banned)
     {
-        $sql = "UPDATE users SET username= ?, password= ?, email = ?, edition_date = NOW() WHERE id= ?";
+        if($banned==null)
+        $banned='no';
+        else
+        $banned='yes';
+        $sql = "UPDATE users SET username= ?, email = ?, group= ?, banned= ? edition_date = NOW() WHERE id= ?";
         $req = $this->database->prepare($sql);
-        $req->execute(array($username, $password, $email, $id));
+        $req->execute(array($username, $email, $group, $banned, $id));
     }
 
     public function delete_user($id)
@@ -67,7 +71,7 @@ class Users
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         echo "<p>The account has been deleted.</p>";
-        echo "<p><a href='UsersController.php?action=logout'>OK</a></p>";
+        
     }
 
     public function log_in($username, $password)

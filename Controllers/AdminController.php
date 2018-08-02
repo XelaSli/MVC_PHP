@@ -37,6 +37,11 @@ class AdminController
         $user = SELF::getAdmin()->display_user($id);
         return ($user);
     }
+
+    public function editUser($id, $username, $email, $group, $banned)
+    {
+        $user= SELF::getAdmin()->edit_user($id, $username, $email, $group, $banned);
+    }
     
     public static function register($username, $password, $password_confirmation, $email,$group)
     {
@@ -82,6 +87,12 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
     }
     
 }
+if (isset($_GET["action"]) && $_GET["action"] == "delete_user" && isset($_GET["id"])) {
+    $id=$_GET['id'];
+        $user=$adminController->getAdmin()->delete_user($id);
+    
+} 
+
 if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
     
     $id=$_GET['id'];
@@ -90,7 +101,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
     require_once("../Views/Users/editUser.php");
     if (isset($_POST["username"]) && isset($_POST["email"])) {
         
-        $adminController::register($_POST["username"], $_POST["banned"], $_POST["email"], $_POST["group"]);
+        $adminController::editUser($id, $_POST["username"], $_POST["email"], $_POST["group"],$_POST["banned"]);
         
     }
     

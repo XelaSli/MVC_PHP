@@ -30,9 +30,10 @@
   echo $values['edition_date']."</td>";
   ?>
   <td><a href="UsersController.php?action=edit_user&id=<?php echo $values['id']?>">Edit</a></td>
-  <td><a href="">Delete</a></td>
+  <td><a href="UsersController.php?action=delete_user&id=<?php echo $values['id']?>">Delete</a></td>
   </tr><?php } ?>
 </table>
+<button  type="button" onclick="location.href='UsersController.php'">Back to Index</button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../Views/template.php");

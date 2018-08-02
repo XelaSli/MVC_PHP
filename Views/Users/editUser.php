@@ -1,7 +1,8 @@
 <?php $title = "Edit User"; ?>
 
 <?php ob_start();?>
-<form method="post" action="AdminController.php?action=edit_user">
+
+<form method="post" action="AdminController.php?action=edit_user&id=<?php echo $user['id'] ?>">
 <label for="username">Username:   </label>
 <input type="text" id="username" name="username" value="<?php echo $user['username'] ?>" placeholder="username" required>
 <br><br>
@@ -16,9 +17,9 @@
 </select>
 <br><br><?php
 if ($user["banned"]=='yes') {
-                    echo "Banned:   <input type='checkbox' name='banned' checked>";
+                    echo "Banned:   <input type='checkbox' name='banned'  checked>";
                 } else {
-                    echo "Banned:   <input type='checkbox' name='banned' unchecked>";
+                    echo "Banned:   <input type='checkbox' name='banned'  unchecked>";
                 }
 
                 ?>
