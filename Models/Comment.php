@@ -13,7 +13,6 @@ class Comment
         $this->database = $connection->getConnection();
     }
 
-
     public function create_comment($user_id, $article_id, $comment)
     {
         $sql = "INSERT INTO comments (user_id, article_id, content) VALUES (?, ?, ?)";
@@ -39,7 +38,7 @@ class Comment
 
     public function display_comments($article_id)
     {
-        $sql = "SELECT * FROM comments WHERE article_id=? ORDER BY creation_date DESC";
+        $sql = "SELECT * FROM comments WHERE article_id=? ORDER BY creation_date ASC";
         $req = $this->database->prepare($sql);
         $req->execute(array($article_id));
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
