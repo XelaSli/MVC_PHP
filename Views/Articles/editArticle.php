@@ -7,7 +7,7 @@
 <input type="text" id="new_title" name="new_title" value="<?=$article_data["title"]?>"required /><br /><br />
 
 <label for="new_content">Content: </label>
-<textarea id="new_content" name="new_content" required><?=$article_data["content"];?></textarea><br /><br />
+<textarea id="new_content" name="new_content" required><?= $article_data["content"];?></textarea><br /><br />
 
 <label for="new_category">Category: </label>
 <select id="new_category" name="new_category" required >
@@ -19,7 +19,6 @@ foreach ($cats as $cat) {
     } else {
         echo "<option value='" . $cat["category"] . "'>" . $cat["category"] . "</option>";
     }
-
 }
 ?>
 </select><br /><br />

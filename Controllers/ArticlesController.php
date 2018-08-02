@@ -75,9 +75,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);
-        $article_data["content"] = str_replace("&lt;br /&gt;", "", $article_data["content"]);
-        // $article_data["content"] = str_replace("&lt;br/&gt;","",$article_data["content"]);
-        // $article_data["content"] = str_replace("&lt;br&gt;","",$article_data["content"]);
+        $article_data["content"] = preg_replace("#\<br /\>#", "", $article_data["content"]);
         $tags_article = $tags_object->getArticleTags($_GET["id"]);
         if ($tags_article != false) {
             $i = 0;
