@@ -27,7 +27,7 @@
 <body>
 <header>
     <div class="blue darken-4 center-align">
-        <div><a href="../Controllers/UsersController.php"><img src="../img/fakebook.jpg" class="responsive-img" width="20%" height="20%"></a></div>
+        <div><a href="../Controllers/UsersController.php"><img src="../img/fakebook1.jpg" class="responsive-img" width="20%" height="20%"></a></div>
     </div>
 </header>
 
@@ -37,18 +37,18 @@
     </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br>
-<footer class="page-footer blue darken-3">
+<footer class="page-footer grey darken-1">
     <div class="container" height="50px">
         <div class="row">
             <div class="col s12 ">
                 <div class="center-align">
                     <h5 class="white-text">Contact</h5>
                 </div>
-                <ul class="center-align">
-                    <li><a href="" class="white-text text-lighten-3" href="#!">Instagram</a></li>
-                    <li><a href="" class="white-text text-lighten-3" href="#!">Twitter</a></li>
-                    <li><a href="mailto:customer-service@gmail.com" class="white-text text-lighten-3" href="#!">Contact us</a></li>  
-                </ul>
+                <div class="center-align">
+                    <a href="http://www.facebook.com/The.Fakebook.Real/" target="_blank" ><img src="../img/fb.png" width="50px" heigth="50px"></a>
+                    <a href="http://images.toucharger.com/img/graphiques/gifs-animes/cinema/autres/exorcist.73210.gif" target="_blank" ><img src="../img/twitter.png" width="50px" heigth="50px"></a>
+                    <a href="https://www.wnba.thedailydunk.co/wp-content/uploads/2018/07/Simpson.jpg" target="_blank" ><img src="../img/insta.png" width="50px" heigth="50px"></a>
+                </div>
             </div>
         </div>
     </div>

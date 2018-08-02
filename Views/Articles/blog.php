@@ -25,7 +25,7 @@ if (empty($articleList)) {
 <?php
 foreach ($articleList as $article) {
     ?>
-<h2><?=$article["title"]?></h2>
+<h3><?=$article["title"]?></h3>
 <p><?=$article["content"]?></p>
 <p><em>Written by <a href="UsersController.php?filter=<?=$article["user_id"] ?>&amp;type=Author"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <a href="UsersController.php?filter=<?=$article["creation_date"] ?>&amp;type=Date"><?=$article["creation_date"]?></a></em></p>
 <?php
