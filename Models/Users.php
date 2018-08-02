@@ -63,6 +63,7 @@ class Users
         $sql = "UPDATE users SET username= ?, email = ?, `group`= ?, banned= ?, edition_date = NOW() WHERE id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($username, $email, $group, $banned, $id));
+        //header("Location:UsersController.php?action=admin");
     }
 
     public function delete_user($id)
@@ -76,7 +77,7 @@ class Users
 
     public function log_in($username, $password)
     {
-        $req = $this->database->prepare("SELECT username, password FROM users WHERE username=:username;");
+        $req = $this->database->prepare("SELECT username, password,`group` FROM users WHERE username=:username;");
         $req->execute(array(":username" => $username));
         $res = $req->fetch();
         if (!$res) {
@@ -85,6 +86,7 @@ class Users
             if ($res["password"] == $password) {
                 $_SESSION['username'] = $res['username'];
                 $_SESSION['password'] = $res['password'];
+                $_SESSION['group'] = $res['group'];
                 return true;
             } else {
                 return false;
@@ -101,7 +103,7 @@ class Users
 
     public function get_group($id)
     {
-        $sql = "SELECT 'group' FROM users WHERE id= ?";
+        $sql = "SELECT `group` FROM users WHERE id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
         $res = $req->fetch(PDO::FETCH_ASSOC);

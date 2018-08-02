@@ -98,12 +98,12 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
     $id=$_GET['id'];
     $user=$adminController->displayUser($id);
     
-    require_once("../Views/Users/editUser.php");
+    
     if (isset($_POST["username"]) && isset($_POST["email"])) {
         
         $adminController::editUser($id, $_POST["username"], $_POST["email"], $_POST["group"],$_POST["banned"]);
-       
+        header("Location: UsersController.php?action=admin");
     }
-    
+    require_once("../Views/Users/editUser.php");
 }
 require_once("../Views/Users/admin.php");
