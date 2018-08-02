@@ -24,7 +24,7 @@
 <br /><br />
 
 <label>Tags: </label>
-<div class="input-field">
+<div class="input-field browser-default">
     <?php
     foreach($tags as $tag){
         echo "<p><input type='checkbox' id='checkboxid' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";

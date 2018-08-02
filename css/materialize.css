@@ -5589,7 +5589,7 @@ button.btn-floating {
 
 .dropdown-content li > a, .dropdown-content li > span {
   font-size: 16px;
-  color: #26a69a;
+  color: #ec08ec;
   display: block;
   line-height: 22px;
   padding: 14px 16px;
@@ -6845,8 +6845,8 @@ textarea.materialize-textarea {
 /* Remove default checkbox */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
-  position: absolute;
-  opacity: 0;
+  position: relative;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -7193,7 +7193,7 @@ select {
 }
 
 .select-wrapper input.select-dropdown:focus {
-  border-bottom: 1px solid #26a69a;
+  border-bottom: 1px solid #ec08ec;
 }
 
 .select-wrapper .caret {
