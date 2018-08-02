@@ -1,5 +1,6 @@
 <?php $title = "Add an article"; ?>
 
+
 <?php ob_start();?>
 <h1>Add an article</h1>
 <form method="post" action="ArticlesController.php">
@@ -10,14 +11,17 @@
 <textarea id="content_article" name="content_article" required></textarea><br /><br />
 
 <label for="category_select">Category: </label>
-<select id="category_select" name="category_select" required >
-<option value=""></option>
-<?php
-foreach ($cats as $cat){
-    echo "<option value='" . $cat["category"] . "'>" . $cat["category"] . "</option>";
-}
-?>
-</select><br /><br />
+<div class="input-field">
+    <select id="category_select" name="category_select" required >
+        <option value=""></option>
+        <?php
+        foreach ($cats as $cat){
+            echo "<option value='" . $cat["category"] . "'>" . $cat["category"] . "</option>";
+        }
+        ?>          
+    </select>
+</div>
+<br /><br />
 
 <label>Tags: </label>
 <?php
