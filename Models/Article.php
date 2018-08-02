@@ -74,28 +74,24 @@ class Article
         $sql = "UPDATE articles SET title= ?, content= ?, category_id = ?WHERE id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($title, $content, $cat, $id));
-        echo "Article successfully updated.";
-
-        foreach ($_POST["existing_tags"] as $val) {
-                if (preg_match("#\##", $val)) {
-                    if (!in_array($val, $data["existing_tags"])) {
-                        $tags_object = new Tags();
-                        $tag_id = $tags_object->getTagId($val);
-                        $tags_object->assign_tags($tag_id, $id);
-                    }
+        $data["existing_tags"] = explode(" ", $_POST["existing_tags"]);
+        unset($data["existing_tags"][count($data["existing_tags"]) - 1]);
+        foreach ($data["existing_tags"] as $val) {
+            if (!in_array($val, $_POST)) {
+                $tags_object = new Tags();
+                $tag_id = $tags_object->getTagId($val);
+                $tags_object->delete_article_tag($tag_id, $id);
+            }
+        }
+        foreach ($_POST as $val) {
+            if (preg_match("#\##", $val) && !preg_match("# #", $val)) {
+                if (!in_array($val, $data["existing_tags"])) {
+                    $tags_object = new Tags();
+                    $tag_id = $tags_object->getTagId($val);
+                    $tags_object->assign_tags($tag_id, $id);
                 }
             }
-
-
-        // foreach ($_POST as $val) {
-        //     if (preg_match("#\##", $val)) {
-        //         if (!in_array($val, $data["existing_tags"])) {
-        //             $tags_object = new Tags();
-        //             $tag_id = $tags_object->getTagId($val);
-        //             $tags_object->assign_tags($tag_id, $id);
-        //         }
-        //     }
-        // }
+        }
     }
 
     public function delete_article($id)

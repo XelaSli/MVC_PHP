@@ -2,12 +2,12 @@
 
 <?php ob_start();?>
 <h1>Edit an article</h1>
-<form method="post" action="ArticlesController.php?action=edit_article&amp;id=<?= $_GET["id"]?>">
+<form method="post" action="ArticlesController.php?action=edit_article&amp;id=<?=$_GET["id"]?>">
 <label for="new_title">Title: </label>
 <input type="text" id="new_title" name="new_title" value="<?=$article_data["title"]?>"required /><br /><br />
 
 <label for="new_content">Content: </label>
-<textarea id="new_content" name="new_content" required><?=$article_data["content"]?></textarea><br /><br />
+<textarea id="new_content" name="new_content" required><?=$article_data["content"];?></textarea><br /><br />
 
 <label for="new_category">Category: </label>
 <select id="new_category" name="new_category" required >
@@ -39,7 +39,11 @@ foreach ($tags as $tag) {
 ?>
 <br /><br />
 <input type="hidden" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" name="author" id="author" />
-<input type="hidden" value="<?=$tags_article;?>" name="existing_tags" id="existing_tags" />
+<input type="hidden" value="<?php
+foreach ($tags_article as $tag_article) {
+    echo $tag_article . " ";
+}
+?>" name="existing_tags" id="existing_tags" />
 <input type="submit" value="Edit" />
 </form>
 <p><a href="UsersController.php">Back</a></p>

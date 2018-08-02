@@ -75,14 +75,19 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);
+        $article_data["content"] = str_replace("&lt;br /&gt;", "", $article_data["content"]);
+        // $article_data["content"] = str_replace("&lt;br/&gt;","",$article_data["content"]);
+        // $article_data["content"] = str_replace("&lt;br&gt;","",$article_data["content"]);
         $tags_article = $tags_object->getArticleTags($_GET["id"]);
-        $i = 0;
-        $tmp;
-        foreach ($tags_article as $tag_article) {
-            $tmp[$i] = $tag_article["tag"];
-            $i++;
+        if ($tags_article != false) {
+            $i = 0;
+            $tmp;
+            foreach ($tags_article as $tag_article) {
+                $tmp[$i] = $tag_article["tag"];
+                $i++;
+            }
+            $tags_article = $tmp;
         }
-        $tags_article = $tmp;
         if (isset($_POST["new_title"])) {
             $_POST["new_category"] = $category_object->getCatId($_POST["new_category"]);
             $articleController->getArticle()->edit_article($_GET["id"], $_POST);
