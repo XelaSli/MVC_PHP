@@ -3,6 +3,7 @@
 include_once '../Config/Database.php';
 include_once '../Models/Categories.php';
 include_once '../Models/Tags.php';
+include_once '../Models/Comment.php';
 
 class Article
 {
@@ -17,7 +18,7 @@ class Article
 
     public function display_articles()
     {
-        $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles ORDER BY creation_date DESC";
+        $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles ORDER BY id DESC";
         //$sql = "SELECT * FROM articles ORDER BY creation_date DESC";
         $req = $this->database->query($sql);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -65,11 +66,16 @@ class Article
         }
     }
 
-    public function edit_article($id, $title = null, $content = null)
+    public function edit_article($id, $data)
     {
-        $sql = "UPDATE articles SET title= ?, content= ?, edition_date = NOW() WHERE id= ?";
-        $req = $this->database->prepare($sql);
-        $req->execute(array($title, $description, $id));
+        $title = $data["new_title"];
+        $content = nl2br($data["new_content"]);
+        $cat = $data["new_category_select"];
+
+var_dump($data);
+        // $sql = "UPDATE articles SET title= ?, content= ? WHERE id= ?";
+        // $req = $this->database->prepare($sql);
+        // $req->execute(array($title, $description, $id));
         echo "Article successfully updated.";
     }
 
@@ -78,7 +84,9 @@ class Article
         $sql = "DELETE FROM articles WHERE id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
-        echo "Article successfully deleted.";
+        $comment = new Comment();
+        $req->closeCursor();
+        $comment->delete_article_comments($id);
     }
 
     public function getLatestId()

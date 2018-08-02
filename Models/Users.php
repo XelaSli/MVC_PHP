@@ -41,13 +41,13 @@ class Users
         return $res;
     }
 
-    public function create_user($username, $password, $email, $group=0)
+    public function create_user($username, $password, $email, $group='User')
     {
         $exists = $this->user_exists($username, $password);
         if ($exists) {
             return (false);
         } else {
-            $sql = "INSERT INTO users (username,password,email,`group`,banned) VALUES(?, ?, ?, ?, 1)";
+            $sql = "INSERT INTO users (username,password,email,`group`,banned) VALUES(?, ?, ?, ?, 'no')";
             $req = $this->database->prepare($sql);
             $res = $req->execute(array($username, $password, $email, $group));
             return (true);

@@ -10,9 +10,9 @@
     <br><br>
     <label for="group">Group:   </label>
     <select id="group" name="group" required>
-    <option  value= "0" selected>User</option>
-    <option value="1">Writer</option>
-    <option value ="2">Administrator</option>
+    <option  value= "User" selected>User</option>
+    <option value="Writer">Writer</option>
+    <option value ="Admin">Admin</option>
     </select>
     <br><br>
     <label for="password">Password:   </label>

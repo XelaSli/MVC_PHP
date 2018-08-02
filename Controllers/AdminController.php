@@ -31,6 +31,12 @@ class AdminController
         //var_dump($userList);
         return ($userList);
     }
+
+    public function displayUser($id){
+    
+        $user = SELF::getAdmin()->display_user($id);
+        return ($user);
+    }
     
     public static function register($username, $password, $password_confirmation, $email,$group)
     {
@@ -56,7 +62,7 @@ class AdminController
         if ($errors == 0) {
             
             SELF::getAdmin();
-            $create = SELF::$admin->create_user($username, md5($password), $email,$group);
+            $create = SELF::$admin->create_user($username, md5($password), $email, $group);
             // if ($create) {
             //     header("Location: ../Views/Users/admin.php");
             // }
@@ -70,8 +76,21 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
     require_once("../Views/Users/createUser.php");
 
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
-        var_dump($_POST);
+        
         $adminController::register($_POST["username"], $_POST["password"], $_POST["password_confirmation"], $_POST["email"], $_POST["group"]);
+        
+    }
+    
+}
+if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
+    
+    $id=$_GET['id'];
+    $user=$adminController->displayUser($id);
+    
+    require_once("../Views/Users/editUser.php");
+    if (isset($_POST["username"]) && isset($_POST["email"])) {
+        
+        $adminController::register($_POST["username"], $_POST["banned"], $_POST["email"], $_POST["group"]);
         
     }
     
