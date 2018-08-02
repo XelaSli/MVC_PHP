@@ -117,7 +117,7 @@ class Article
         switch (true) {
             case ($type == "Author"):
                 $req = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles WHERE user_id = :filter ORDER BY id DESC");
-                $req->execute(array(":filter" => $filter . "%"));
+                $req->execute(array(":filter" => $filter));
                 $res = $req->fetchAll(PDO::FETCH_ASSOC);
                 break;
             case ($type == "Date"):
@@ -127,24 +127,20 @@ class Article
                 break;
             case ($type == "Category"):
                 $req = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles WHERE category_id = :filter ORDER BY id DESC");
-                $req->execute(array(":filter" => $filter . "%"));
+                $req->execute(array(":filter" => $filter));
                 $res = $req->fetchAll(PDO::FETCH_ASSOC);
                 break;
             case ($type == "Tag"):
+                $i = 0;
+                $tags_object = new Tags();
+                $articles = $tags_object->getArticleTagId($filter);
+                foreach ($articles as $article) {
+                    $req = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles WHERE id = :filter ORDER BY id DESC");
+                    $req->execute(array(":filter" => $article["article_id"]));
+                    $res[$i] = $req->fetch(PDO::FETCH_ASSOC);
+                    $i++;
+                }
                 break;
-        }
-
-        if (preg_match("#\##", $filter)) {
-            $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles ORDER BY id DESC";
-            $req = $this->database->query($sql);
-            $res = $req->fetchAll(PDO::FETCH_ASSOC);
-        } elseif (preg_match("#[0-9]{4}\-[0-9]{2}\-[0-9]{2}#", $filter)) {
-            $sql = "SELECT id, title, content, DATE_FORMAT(creation_date, '%Y-%m-%d') AS creation_date, DATE_FORMAT(edition_date, '%Y-%m-%d') AS edition_date, user_id, category_id FROM articles WHERE creation_date LIKE :filter ORDER BY id DESC";
-            $req = $this->database->prepare($sql);
-            $req->execute(array(":filter" => $filter . "%"));
-            $res = $req->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-
         }
         return ($res);
     }
