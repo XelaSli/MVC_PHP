@@ -7,7 +7,7 @@
 <input type="hidden" value="create_article" id="action" name="action" />
 <?php
 if ($_SESSION["group"] != "User") {?>
-<input type="submit" value="Add a new article" />
+<input type="submit" value="Add a new article" class="waves-effect waves-light btn"/>
 <?php }?>
 </form>
 <?php

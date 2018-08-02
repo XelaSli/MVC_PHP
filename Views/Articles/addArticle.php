@@ -24,15 +24,17 @@
 <br /><br />
 
 <label>Tags: </label>
-<?php
-foreach($tags as $tag){
-    echo "<input type='checkbox' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";
-    echo "<label for='" . $tag["tag"] . "' /> " . $tag["tag"] . "</label> ";
-}
-?>
+<div class="input-field">
+    <?php
+    foreach($tags as $tag){
+        echo "<p><input type='checkbox' id='checkboxid' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";
+        echo "<label for='checkboxid' /> " . $tag["tag"] . "</label></p>";
+    }
+    ?>
+</div>
 <br /><br />
 <input type="hidden" value="<?= $userController::getUser()->getUserId($_SESSION["username"]); ?>" name="author" id="author" />
-<input type="submit" value="Add" />
+<input class="waves-effect waves-light btn" type="submit" value="Add" />
 </form>
 <p><a href="UsersController.php">Back</a></p>
 <?php $content = ob_get_clean();?>
