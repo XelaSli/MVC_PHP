@@ -5,7 +5,10 @@
 <h1>Blog</h1>
 <form method="get" action="UsersController.php">
 <input type="hidden" value="create_article" id="action" name="action" />
+<?php
+if ($_SESSION["group"] != "User") {?>
 <input type="submit" value="Add a new article" />
+<?php }?>
 </form>
 <?php
 if (empty($articleList)) {
@@ -32,14 +35,20 @@ $tags = $tags_object->getArticleTags($article["id"]);
             echo $tag["tag"] . " ";
         }
     }
-    ?>
+    if ($_SESSION["group"] != "User") {?>
     <p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>">Delete article</a></p>
     <?php
+}
     $comment_object = new Comment();
     $comments = $comment_object->display_comments($article["id"]);
     if ($comments != false) {
         foreach ($comments as $comment) {
-            echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] . "'>Delete comment</a></p>";
+            if ($comment["username"] == $_SESSION["username"]) {
+                echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] . "'>Delete comment</a></p>";
+            } else {
+                echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"];
+            }
+
         }
     }
     ?>
