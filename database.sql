@@ -64,3 +64,4 @@ CREATE TABLE IF NOT EXISTS `links` (
   `tag_id` tinyint(4) NOT NULL,
   `article_id` tinyint(4) NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
