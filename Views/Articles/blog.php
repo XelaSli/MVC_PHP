@@ -15,7 +15,7 @@ if ($_SESSION["group"] != "User") {?>
 <?php
 if ($_SESSION["group"] != "User") {?><br>
 <input type="submit" value="Create a new category" class="waves-effect blue darken-1 btn"/>
-<?php } ?>
+<?php }?>
 </form>
 <?php
 if (empty($articleList)) {
