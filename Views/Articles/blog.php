@@ -11,7 +11,7 @@ if ($_SESSION["group"] != "User") {?>
 <?php }?>
 </form>
 <form method="get" action="UsersController.php">
-<input type="hidden" value="add_category" id="action" name="action" />
+<input type="hidden" value="create_category" id="action" name="action" />
 <?php
 if ($_SESSION["group"] != "User") {?><br>
 <input type="submit" value="Create a new category" class="waves-effect blue darken-1 btn"/>
@@ -27,19 +27,19 @@ foreach ($articleList as $article) {
     ?>
 <h2><?=$article["title"]?></h2>
 <p><?=$article["content"]?></p>
-<p><em>Written by <a href="UsersController.php?filter=<?=$article["user_id"] ?>&amp;type=Author"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <?=$article["creation_date"]?></em></p>
+<p><em>Written by <a href="UsersController.php?filter=<?=$article["user_id"] ?>&amp;type=Author"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <a href="UsersController.php?filter=<?=$article["creation_date"] ?>&amp;type=Date"><?=$article["creation_date"]?></a></em></p>
 <?php
 if ($article["creation_date"] != $article["edition_date"]) {
         echo "<p><em>Last modification: " . $article["edition_date"] . "</em></p>";
     }
     ?>
-    <p>Category: <?=$category_object->getCategory($article["category_id"])?></p>
+    <p>Category: <a href="UsersController.php?filter=<?=$article["category_id"]?>&amp;type=Category"><?=$category_object->getCategory($article["category_id"])?></a></p>
 <?php
 $tags = $tags_object->getArticleTags($article["id"]);
     if ($tags != false) {
         echo "Tags: ";
         foreach ($tags as $tag) {
-            echo $tag["tag"] . " ";
+            echo "<a href='UsersController.php?filter=" . $tags_object->getTagId($tag["tag"]) . "&amp;type=Tag'>" . $tag["tag"] . "</a> ";
         }
     }
     if ($_SESSION["group"] != "User") {?>
