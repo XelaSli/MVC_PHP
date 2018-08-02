@@ -78,6 +78,13 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
         $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
         header("Location: UsersController.php");
     }
+} 
+elseif (isset($_GET["action"]) && $_GET["action"] == "delete_comment") {
+    if (isset($_GET["id"])) {
+        $comment_object = new Comment();
+        $comment_object->delete_comment($_GET["id"]);
+        header("Location: UsersController.php");
+    }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);

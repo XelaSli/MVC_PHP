@@ -36,7 +36,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
     $comments = $comment_object->display_comments($article["id"]);
     if ($comments != false) {
         foreach ($comments as $comment) {
-            echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . "</p>";
+            echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] ."'>Delete comment</a></p>";
         }
     }
     ?>
