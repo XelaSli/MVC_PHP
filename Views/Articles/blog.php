@@ -27,7 +27,7 @@ foreach ($articleList as $article) {
     ?>
 <h2><?=$article["title"]?></h2>
 <p><?=$article["content"]?></p>
-<p><em>Written by <?=$userController::getUser()->display_user($article["user_id"])["username"]?> on <?=$article["creation_date"]?></em></p>
+<p><em>Written by <a href="UsersController.php?filter=<?=$article["user_id"] ?>&amp;type=Author"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <?=$article["creation_date"]?></em></p>
 <?php
 if ($article["creation_date"] != $article["edition_date"]) {
         echo "<p><em>Last modification: " . $article["edition_date"] . "</em></p>";
