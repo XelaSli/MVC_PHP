@@ -66,11 +66,16 @@ class Article
         }
     }
 
-    public function edit_article($id, $title = null, $content = null)
+    public function edit_article($id, $data)
     {
-        $sql = "UPDATE articles SET title= ?, content= ?, edition_date = NOW() WHERE id= ?";
-        $req = $this->database->prepare($sql);
-        $req->execute(array($title, $description, $id));
+        $title = $data["new_title"];
+        $content = nl2br($data["new_content"]);
+        $cat = $data["new_category_select"];
+
+var_dump($data);
+        // $sql = "UPDATE articles SET title= ?, content= ? WHERE id= ?";
+        // $req = $this->database->prepare($sql);
+        // $req->execute(array($title, $description, $id));
         echo "Article successfully updated.";
     }
 

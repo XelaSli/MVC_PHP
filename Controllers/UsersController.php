@@ -93,6 +93,10 @@ class UsersController
         {
             require_once "ArticlesController.php";
         }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'edit_article')
+        {
+            require_once "ArticlesController.php";
+        }
         else {
             require_once "ArticlesController.php";
         }

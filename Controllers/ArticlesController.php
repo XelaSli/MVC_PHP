@@ -65,15 +65,34 @@ $articleController = ArticleController::getArticleController();
 $articleList = $articleController->displayArticleList();
 $category_object = new Categories();
 $tags_object = new Tags();
+$tags = $tags_object->getTags();
+$cats = $category_object->getCategories();
 
 if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
-    $tags = $tags_object->getTags();
-    $cats = $category_object->getCategories();
     require_once "../Views/Articles/addArticle.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_article") {
     $articleController->getArticle()->delete_article($_GET["id"]);
-}
- elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
+} elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
+    if (isset($_GET["id"]) && $_GET["id"] != "") {
+        $article_data = $articleController->getArticle()->display_article($_GET["id"]);
+        $tags_article = $tags_object->getArticleTags($_GET["id"]);
+        $i = 0;
+        $tmp;
+        foreach ($tags_article as $tag_article) {
+            $tmp[$i] = $tag_article["tag"];
+            $i++;
+        }
+        $tags_article = $tmp;
+        if (isset($_POST["new_title"])) {
+            header("Location: index.php");
+            //$articleController->getArticle()->edit_article($_GET["id"], $_POST);
+        }
+        require_once "../Views/Articles/editArticle.php";
+    } else {
+        header("Location: UsersController.php");
+    }
+
+} elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
     $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
     $articleController->getArticle()->create_article($_POST);
     header("Location: UsersController.php");
