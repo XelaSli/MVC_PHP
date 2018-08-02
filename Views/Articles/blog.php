@@ -5,7 +5,7 @@
 <h1>Blog</h1>
 <form method="get" action="UsersController.php">
 <input type="hidden" value="create_article" id="action" name="action" />
-<input type="submit" value="Add a new article" />
+<input type="submit" value="Add a new article" class="waves-effect waves-light btn" />
 </form>
 <?php
 if (empty($articleList)) {
