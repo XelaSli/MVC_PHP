@@ -78,4 +78,12 @@ class Tags
         $res = $req->fetch(PDO::FETCH_ASSOC);
         return ($res['id']);
     }
+
+    public function getArticleTagId($tag_id)
+    {
+        $req = $this->database->prepare("SELECT article_id FROM tags WHERE tag_id=:tag_id;");
+        $req->execute(array(":tag_id" => $tag_id));
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        return ($res);
+    }
 }
