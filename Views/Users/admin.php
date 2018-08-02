@@ -7,7 +7,7 @@
 <h2>Admin</h2>
 <form method="get" action="AdminController.php">
 <input type="hidden" value="create_user" id="action" name="action"/>
-<input type="submit" value="Add a new user" class="waves-effect waves-light btn"/>
+<input type="submit" value="Add a new user" class="waves-effect blue darken-1 btn"/>
 </form>
 <table>
 <tr>
@@ -32,8 +32,8 @@
   <td><a href="UsersController.php?action=edit_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a></td>
   <td><a href="UsersController.php?action=delete_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
   </tr><?php } ?>
-</table>
-<button  type="button" onclick="location.href='UsersController.php'" class="waves-effect waves-light btn">Back to Index</button>
+</table><br><br>
+<button  type="button" onclick="location.href='UsersController.php'" class="waves-effect blue darken-1 btn">Back to Index</button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../Views/template.php");

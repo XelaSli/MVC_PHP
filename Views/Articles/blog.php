@@ -7,14 +7,14 @@
 <input type="hidden" value="create_article" id="action" name="action" />
 <?php
 if ($_SESSION["group"] != "User") {?>
-<input type="submit" value="Add a new article" class="waves-effect waves-light btn"/>
+<input type="submit" value="Add a new article" class="waves-effect blue darken-1 btn"/>
 <?php }?>
 </form>
 <form method="get" action="UsersController.php">
 <input type="hidden" value="add_category" id="action" name="action" />
 <?php
-if ($_SESSION["group"] != "User") {?>
-<input type="submit" value="Create a new category" class="waves-effect waves-light btn"/>
+if ($_SESSION["group"] != "User") {?><br>
+<input type="submit" value="Create a new category" class="waves-effect blue darken-1 btn"/>
 <?php }?>
 </form>
 <?php
@@ -43,7 +43,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
         }
     }
     if ($_SESSION["group"] != "User") {?>
-    <p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>">Delete article</a></p>
+    <p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>"><i class="material-icons">edit</i></a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>"><i class="material-icons">delete_forever</i></a></p>
     <?php
 }
     $comment_object = new Comment();
@@ -60,7 +60,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
     }
     ?>
 <form method="post" action="UsersController.php?action=add_comment&amp;id=<?=$article["id"]?>">
-<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" value="Add" />
+<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" class="waves-effect blue darken-1 btn" value="Add" />
 </form>
 <?php
 }
