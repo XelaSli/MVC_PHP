@@ -69,6 +69,9 @@ class UsersController
         elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_article") && ($_SESSION["group"] != "User")) {
             require_once "ArticlesController.php";
         }
+        elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_category") && ($_SESSION["group"] != "User")) {
+            require_once "ArticlesController.php";
+        }
         elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
             require_once "AdminController.php";
         }

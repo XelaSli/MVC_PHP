@@ -90,6 +90,9 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
         $comment_object->delete_comment($_GET["id"]);
         header("Location: UsersController.php");
     }
+elseif (isset($_GET["action"]) && $_GET["action"] == "create_category" && ($_SESSION["group"] != "User")) {
+        require_once "../Views/Articles/addCategory.php";
+    }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSION["group"] != "User")) {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);
@@ -119,4 +122,5 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
     $articleController->getArticle()->create_article($_POST);
     header("Location: UsersController.php");
 }
+
 require_once "../Views/Articles/blog.php";
