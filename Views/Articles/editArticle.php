@@ -43,9 +43,9 @@ foreach ($tags_article as $tag_article) {
     echo $tag_article . " ";
 }
 ?>" name="existing_tags" id="existing_tags" />
-<input type="submit" value="Edit" />
+<input type="submit"  class="waves-effect blue darken-1 btn" value="Edit" />
 </form>
-<p><a href="UsersController.php">Back</a></p>
+<p><a href="UsersController.php" class="waves-effect blue darken-1 btn">Back</a></p>
 <?php $content = ob_get_clean();?>
 
 <?php require_once "../Views/template.php";
