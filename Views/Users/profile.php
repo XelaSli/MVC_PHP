@@ -9,7 +9,7 @@
     <label for="email">Email:   </label>
     <input type="email" id="email" name="email" value="<?= $data["email"] ?>" readonly>
 </form>
-<p><a href="../Controllers/UsersController.php?action=delete&amp;id=<?= $data["id"] ?>">Delete my account</a></p>
+<p><a href="../Controllers/UsersController.php?action=delete&amp;id=<?= $data["id"] ?>"><i class="material-icons">delete_forever</i></a></p>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../Views/template.php");
