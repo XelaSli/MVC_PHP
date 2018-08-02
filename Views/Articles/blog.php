@@ -32,18 +32,20 @@ $tags = $tags_object->getArticleTags($article["id"]);
             echo $tag["tag"] . " ";
         }
     }
+    ?>
+    <p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>">Delete article</a></p>
+    <?php
     $comment_object = new Comment();
     $comments = $comment_object->display_comments($article["id"]);
     if ($comments != false) {
         foreach ($comments as $comment) {
-            echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] ."'>Delete comment</a></p>";
+            echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] . "'>Delete comment</a></p>";
         }
     }
     ?>
 <form method="post" action="UsersController.php?action=add_comment&amp;id=<?=$article["id"]?>">
 <label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" value="Add" />
 </form>
-<p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>">Delete article</a></p>
 <?php
 }
 ?>

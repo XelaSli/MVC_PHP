@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 <h1>Edit an article</h1>
-<form method="post" action="ArticlesController.php?action=edit_article&amp;id=<?=$_GET["id"]?>">
+<form method="post" action="UsersController.php?action=edit_article&amp;id=<?=$_GET["id"]?>">
 <label for="new_title">Title: </label>
 <input type="text" id="new_title" name="new_title" value="<?=$article_data["title"]?>"required /><br /><br />
 
