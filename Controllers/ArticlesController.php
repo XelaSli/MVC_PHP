@@ -72,17 +72,33 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     require_once "../Views/Articles/addArticle.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_article") {
     $articleController->getArticle()->delete_article($_GET["id"]);
+} elseif (isset($_GET["action"]) && $_GET["action"] == "add_comment") {
+    if (isset($_GET["id"]) && isset($_POST["comment"])) {
+        $comment_object = new Comment();
+        $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
+        header("Location: UsersController.php");
+    }
+} 
+elseif (isset($_GET["action"]) && $_GET["action"] == "delete_comment") {
+    if (isset($_GET["id"])) {
+        $comment_object = new Comment();
+        $comment_object->delete_comment($_GET["id"]);
+        header("Location: UsersController.php");
+    }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);
+        $article_data["content"] = preg_replace("#\<br /\>#", "", $article_data["content"]);
         $tags_article = $tags_object->getArticleTags($_GET["id"]);
-        $i = 0;
-        $tmp;
-        foreach ($tags_article as $tag_article) {
-            $tmp[$i] = $tag_article["tag"];
-            $i++;
+        if ($tags_article != false) {
+            $i = 0;
+            $tmp;
+            foreach ($tags_article as $tag_article) {
+                $tmp[$i] = $tag_article["tag"];
+                $i++;
+            }
+            $tags_article = $tmp;
         }
-        $tags_article = $tmp;
         if (isset($_POST["new_title"])) {
             $_POST["new_category"] = $category_object->getCatId($_POST["new_category"]);
             $articleController->getArticle()->edit_article($_GET["id"], $_POST);

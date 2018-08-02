@@ -53,6 +53,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `tag` text NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Ajout de tags
+INSERT INTO `tags` (`tag`) VALUES("#fit"), ("#health"), ("#fun");
+
 DROP TABLE IF EXISTS `links`;
 
 CREATE TABLE IF NOT EXISTS `links` (
