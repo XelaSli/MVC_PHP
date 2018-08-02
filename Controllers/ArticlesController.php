@@ -72,6 +72,11 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     require_once "../Views/Articles/addArticle.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_article") {
     $articleController->getArticle()->delete_article($_GET["id"]);
+} elseif (isset($_GET["action"]) && $_GET["action"] == "add_comment") {
+    if (isset($_GET["id"]) && isset($_POST["comment"])) {
+        $comment_object = new Comment();
+        $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
+    }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);

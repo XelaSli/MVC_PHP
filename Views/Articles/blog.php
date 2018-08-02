@@ -33,6 +33,9 @@ if ($tags != false){
     }
 }
 ?>
+<form method="post" action="UsersController.php?action=add_comment&amp;id=<?= $article["id"] ?>">
+<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?= $userController::getUser()->getUserId($_SESSION["username"]); ?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" value="Add" />
+</form>
 <p><a href="UsersController.php?action=edit_article&amp;id=<?= $article["id"] ?>">Edit article</a> - <a href="UsersController.php?action=delete_article&amp;id=<?= $article["id"] ?>">Delete article</a></p>
 <?php
 }

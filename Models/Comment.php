@@ -18,7 +18,6 @@ class Comment
         $sql = "INSERT INTO comments (user_id, article_id, content) VALUES (?, ?, ?)";
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($user_id, $article_id, $comment));
-        echo "Comment created";
     }
 
     public function delete_comment($comment_id)
