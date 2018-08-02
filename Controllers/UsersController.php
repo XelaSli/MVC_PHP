@@ -89,15 +89,29 @@ class UsersController
             }
             
         } 
-        elseif (isset($_GET['action']) && $_GET['action'] == 'admin')
+        elseif (isset($_GET['action']) && $_GET['action'] == 'admin' && $_SESSION['group'] == 'Admin')
         {
+            //$group= $userController::getUser()->get_group($_SESSION["id"]);
+            //var_dump($group);
+            //if($_SESSION['group'] == 'Admin')
+            //header('Location: AdminController.php');
             require_once "AdminController.php";
+            
+            
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete_article')
         {
             require_once "ArticlesController.php";
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'edit_article')
+        {
+            require_once "ArticlesController.php";
+        }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'add_comment')
+        {
+            require_once "ArticlesController.php";
+        }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'delete_comment')
         {
             require_once "ArticlesController.php";
         }

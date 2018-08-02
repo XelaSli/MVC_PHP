@@ -18,7 +18,6 @@ class Comment
         $sql = "INSERT INTO comments (user_id, article_id, content) VALUES (?, ?, ?)";
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($user_id, $article_id, $comment));
-        echo "Comment created";
     }
 
     public function delete_comment($comment_id)
@@ -38,7 +37,7 @@ class Comment
 
     public function display_comments($article_id)
     {
-        $sql = "SELECT * FROM comments WHERE article_id=? ORDER BY creation_date ASC";
+        $sql = "SELECT comments.id, comments.content, users.username FROM comments INNER JOIN users ON users.id = comments.user_id WHERE article_id=? ORDER BY comments.creation_date ASC";
         $req = $this->database->prepare($sql);
         $req->execute(array($article_id));
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
