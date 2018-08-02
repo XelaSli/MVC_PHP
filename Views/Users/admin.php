@@ -4,7 +4,7 @@
 
 
 ?>
-<h1>Admin</h1>
+<h2>Admin</h2>
 <form method="get" action="AdminController.php">
 <input type="hidden" value="create_user" id="action" name="action" />
 <input type="submit" value="Add a new user" />

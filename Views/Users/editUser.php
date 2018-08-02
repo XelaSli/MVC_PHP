@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 
-<form method="post" action="AdminController.php?action=edit_user&id=<?php echo $user['id'] ?>">
+<form method="post" >
 <label for="username">Username:   </label>
 <input type="text" id="username" name="username" value="<?php echo $user['username'] ?>" placeholder="username" required>
 <br><br>
@@ -24,7 +24,7 @@ if ($user["banned"]=='yes') {
 
                 ?>
 <br><br>
-<button  type="submit" name="submit">Modify</button>
+<button  type="submit" name="submit" onclick="location.href='UsersController.php?action=admin'">Modify</button>
 </form>
 <button  type="button" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
 <?php $content = ob_get_clean(); ?>

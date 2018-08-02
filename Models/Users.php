@@ -60,7 +60,7 @@ class Users
         $banned='no';
         else
         $banned='yes';
-        $sql = "UPDATE users SET username= ?, email = ?, group= ?, banned= ? edition_date = NOW() WHERE id= ?";
+        $sql = "UPDATE users SET username= ?, email = ?, `group`= ?, banned= ?, edition_date = NOW() WHERE id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($username, $email, $group, $banned, $id));
     }
