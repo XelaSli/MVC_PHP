@@ -76,6 +76,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
     if (isset($_GET["id"]) && isset($_POST["comment"])) {
         $comment_object = new Comment();
         $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
+        header("Location: UsersController.php");
     }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article") {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
