@@ -97,6 +97,9 @@ class UsersController
         {
             require_once "ArticlesController.php";
         }
+        if (isset($_POST["new_title"])) {
+            require_once "ArticlesController.php";
+        }
         else {
             require_once "ArticlesController.php";
         }

@@ -84,8 +84,9 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article") {
         }
         $tags_article = $tmp;
         if (isset($_POST["new_title"])) {
-            header("Location: index.php");
-            //$articleController->getArticle()->edit_article($_GET["id"], $_POST);
+            $_POST["new_category"] = $category_object->getCatId($_POST["new_category"]);
+            $articleController->getArticle()->edit_article($_GET["id"], $_POST);
+            header("Location: UsersController.php");
         }
         require_once "../Views/Articles/editArticle.php";
     } else {

@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 <h1>Edit an article</h1>
-<form method="post" action="ArticlesController.php?action=edit_article">
+<form method="post" action="ArticlesController.php?action=edit_article&amp;id=<?= $_GET["id"]?>">
 <label for="new_title">Title: </label>
 <input type="text" id="new_title" name="new_title" value="<?=$article_data["title"]?>"required /><br /><br />
 
@@ -39,6 +39,7 @@ foreach ($tags as $tag) {
 ?>
 <br /><br />
 <input type="hidden" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" name="author" id="author" />
+<input type="hidden" value="<?=$tags_article;?>" name="existing_tags" id="existing_tags" />
 <input type="submit" value="Edit" />
 </form>
 <p><a href="UsersController.php">Back</a></p>
