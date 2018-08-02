@@ -7,3 +7,5 @@
 <label for="category_article">Name: </label>
 <input type="text" id="category_article" name="category_article" required /><br /><br />
 <br /><br />
+
+<?php require_once "../Views/template.php";
