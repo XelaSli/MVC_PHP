@@ -3,10 +3,10 @@
 <?php ob_start(); ?>
 <form method="post">
 <label for="username_connect">Username: </label>
-<input type="text" id="username_connect" name="username_connect" required /><br /><br />
+<input type="text" id="username_connect" class="center-align" name="username_connect" required /><br /><br />
 
 <label for="password_connect">Password: </label>
-<input type="password" id="password_connect" name="password_connect" required /><br /><br />
+<input type="password" id="password_connect" class="center-align" name="password_connect" required /><br /><br />
 
 <input type="submit" value="Log in" />
 </form>
