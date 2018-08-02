@@ -11,7 +11,7 @@ if ($_SESSION["group"] != "User") {?>
 <?php }?>
 </form>
 <form method="get" action="UsersController.php">
-<input type="hidden" value="add_category" id="action" name="action" />
+<input type="hidden" value="create_category" id="action" name="action" />
 <?php
 if ($_SESSION["group"] != "User") {?><br>
 <input type="submit" value="Create a new category" class="waves-effect blue darken-1 btn"/>
