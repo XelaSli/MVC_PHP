@@ -75,10 +75,14 @@ class UsersController
         elseif (isset($_GET["action"]) && $_GET["action"] == "edit_user") {
             require_once "AdminController.php";
         }
+        elseif (isset($_GET["action"]) && $_GET["action"] == "delete_user") {
+            require_once "AdminController.php";
+        }
         elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
             $id = $userController::getUser()->getUserId($_SESSION["username"]);
             if ($id == $_GET["id"]){
                 $userController::getUser()->delete_user($_GET["id"]);
+                echo "<p><a href='UsersController.php?action=logout'>OK</a></p>";
             }
             else{
                 echo "<p>You can't delete other users!</p>";
@@ -95,6 +99,9 @@ class UsersController
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'edit_article')
         {
+            require_once "ArticlesController.php";
+        }
+        if (isset($_POST["new_title"])) {
             require_once "ArticlesController.php";
         }
         else {
