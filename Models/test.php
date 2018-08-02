@@ -11,3 +11,4 @@ $get = $test->create_user('james','azerty','aldo@aldo.com');
 // $get=$test->delete_user(2);
 
 echo"</pre>";
+//action="AdminController.php?action=edit_user&id=<?php echo $user['id'] 
