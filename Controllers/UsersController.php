@@ -91,10 +91,7 @@ class UsersController
         } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'admin' && $_SESSION['group'] == 'Admin')
         {
-            //$group= $userController::getUser()->get_group($_SESSION["id"]);
-            //var_dump($group);
-            //if($_SESSION['group'] == 'Admin')
-            //header('Location: AdminController.php');
+            
             require_once "AdminController.php";
             
             

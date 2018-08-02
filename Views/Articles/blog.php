@@ -7,6 +7,10 @@
 <input type="hidden" value="create_article" id="action" name="action" />
 <input type="submit" value="Add a new article" />
 </form>
+<form method="get" action="UsersController.php">
+<input type="hidden" value="add_category" id="action" name="action" />
+<input type="submit" value="Create a new category" />
+</form>
 <?php
 if (empty($articleList)) {
     echo "<p>No articles yet.</p>";
