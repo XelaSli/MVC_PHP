@@ -3,13 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/materialize.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var options = {};
+            var instances = M.FormSelect.init(elems, options);
+        });
+    </script>
     <title><?=$title?></title>
 </head>
 <body>
 <header>
     <div class="blue darken-4 center-align">
-        <div id="company_name"><img src="../img/fakebook.jpg" class="responsive-img" width="20%" height="20%"  ></div>
+        <div><a href="../Controllers/UsersController.php"><img src="../img/fakebook.jpg" class="responsive-img" width="20%" height="20%"></a></div>
     </div>
 </header>
 <br><br>
