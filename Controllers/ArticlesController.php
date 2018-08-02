@@ -62,11 +62,17 @@ class ArticleController
     // }
 }
 $articleController = ArticleController::getArticleController();
-$articleList = $articleController->displayArticleList();
+
 $category_object = new Categories();
 $tags_object = new Tags();
 $tags = $tags_object->getTags();
 $cats = $category_object->getCategories();
+if (isset($_GET["filter"]) && isset($_GET["type"])) {
+        $articleList = $articleController::getArticle()->filter_articles($_GET["filter"], $_GET["type"]);
+}
+else{
+    $articleList = $articleController->displayArticleList();
+}
 
 if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION["group"] != "User")) {
     require_once "../Views/Articles/addArticle.php";
@@ -78,8 +84,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
         $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
         header("Location: UsersController.php");
     }
-} 
-elseif (isset($_GET["action"]) && $_GET["action"] == "delete_comment") {
+} elseif (isset($_GET["action"]) && $_GET["action"] == "delete_comment") {
     if (isset($_GET["id"])) {
         $comment_object = new Comment();
         $comment_object->delete_comment($_GET["id"]);

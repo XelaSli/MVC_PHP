@@ -21,9 +21,9 @@
     <label for="password_confirmation">Password confirmation:   </label>
     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="password_confirmation" required>
     <br><br>
-    <button  type="submit" name="submit">Create</button>
-</form>
-<button  type="button" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
+    <button  type="submit" class="waves-effect blue darken-1 btn" name="submit">Create</button>
+</form><br>
+<button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../Views/template.php");?>
