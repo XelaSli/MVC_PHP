@@ -25,19 +25,19 @@ foreach ($articleList as $article) {
     ?>
 <h3><?=$article["title"]?></h3>
 <p><?=$article["content"]?></p>
-<p><em>Written by <a href="UsersController.php?filter=<?=$article["user_id"] ?>&amp;type=Author"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <a href="UsersController.php?filter=<?=$article["creation_date"] ?>&amp;type=Date"><?=$article["creation_date"]?></a></em></p>
+<p><em>Written by <a href="./Author/<?=$article["user_id"] ?>"><?=$userController::getUser()->display_user($article["user_id"])["username"]?></a> on <a href="./Date/<?=$article["creation_date"] ?>"><?=$article["creation_date"]?></a></em></p>
 <?php
 if ($article["creation_date"] != $article["edition_date"]) {
         echo "<p><em>Last modification: " . $article["edition_date"] . "</em></p>";
     }
     ?>
-    <p>Category: <a href="UsersController.php?filter=<?=$article["category_id"]?>&amp;type=Category"><?=$category_object->getCategory($article["category_id"])?></a></p>
+    <p>Category: <a href="./Category/<?=$article["category_id"]?>"><?=$category_object->getCategory($article["category_id"])?></a></p>
 <?php
 $tags = $tags_object->getArticleTags($article["id"]);
     if ($tags != false) {
         echo "Tags: ";
         foreach ($tags as $tag) {
-            echo "<a href='UsersController.php?filter=" . $tags_object->getTagId($tag["tag"]) . "&amp;type=Tag'>" . $tag["tag"] . "</a> ";
+            echo "<a href='./Tag/" . $tags_object->getTagId($tag["tag"]) . "'>" . $tag["tag"] . "</a> ";
         }
     }
     if ($_SESSION["group"] != "User") {?>
