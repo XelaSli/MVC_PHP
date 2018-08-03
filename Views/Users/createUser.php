@@ -1,7 +1,7 @@
 <?php $title = "Create User"; ?>
 
 <?php ob_start(); ?>
-<form method="post" action="AdminController.php?action=create_user">
+<form method="post" action="./create_user">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" placeholder="username" required>
     <br><br>
@@ -23,7 +23,7 @@
     <br><br>
     <button  type="submit" class="waves-effect blue darken-1 btn" name="submit">Create</button>
 </form><br>
-<button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
+<button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='./admin'">Back to Admin</button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("Views/template.php");?>
