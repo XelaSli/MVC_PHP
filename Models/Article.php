@@ -1,9 +1,9 @@
 <?php
 
-include_once '../Config/Database.php';
-include_once '../Models/Categories.php';
-include_once '../Models/Tags.php';
-include_once '../Models/Comment.php';
+include_once 'Config/Database.php';
+include_once 'Models/Categories.php';
+include_once 'Models/Tags.php';
+include_once 'Models/Comment.php';
 
 class Article
 {

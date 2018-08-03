@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 <h1>Edit an article</h1>
-<form method="post" action="UsersController.php?action=edit_article&amp;id=<?=$_GET["id"]?>">
+<form method="post" action="edit_article&amp;id=<?=$_GET["id"]?>">
 <label for="new_title">Title: </label>
 <input type="text" id="new_title" name="new_title" value="<?=$article_data["title"]?>"required /><br /><br />
 
@@ -43,7 +43,7 @@ foreach ($tags_article as $tag_article) {
 ?>" name="existing_tags" id="existing_tags" />
 <input type="submit"  class="waves-effect blue darken-1 btn" value="Edit" />
 </form>
-<p><a href="UsersController.php" class="waves-effect blue darken-1 btn">Back</a></p>
+<p><a href="." class="waves-effect blue darken-1 btn">Back</a></p>
 <?php $content = ob_get_clean();?>
 
-<?php require_once "../Views/template.php";
+<?php require_once "Views/template.php";
