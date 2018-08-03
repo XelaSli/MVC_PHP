@@ -14,12 +14,13 @@ class Categories{
     {
         $req = $this->database->prepare("SELECT category FROM categories WHERE category=:category;");
         $req->execute(array(":category" => $cat));
+        
         if ($req->fetch() == false) {
             $req->closeCursor();
-            $req = $this->database->prepare("INSERT INTO categories(category) VALUES(category=:category;");
+            $req = $this->database->prepare("INSERT INTO categories(category) VALUES (:category);");
             $req->execute(array(":category" => $cat));
         } else {
-            echo "<p>This category already exists.</p>";
+            //echo "<p>This category already exists.</p>";
             return (false);
         }
     }

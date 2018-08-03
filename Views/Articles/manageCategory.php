@@ -15,8 +15,8 @@
   echo "<tr><td>";
   echo $values['category']."</td><td>";
   ?>
-  <td><a href="UsersController.php?action=edit_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
-  <a href="UsersController.php?action=delete_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
+  <td><a href="UsersController.php?action=edit_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
+  <a href="UsersController.php?action=delete_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete</i></a></td>
   </tr>
   <?php } ?>
 </table><br /><br />
@@ -37,8 +37,7 @@
   echo "<tr><td>";
   echo $values['tag']."</td><td>";
   ?>
-  <td><a href="UsersController.php?action=edit_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
-  <a href="UsersController.php?action=delete_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
+  <td><a href="ArticlesController.php?action=delete_tag&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete</i></a></td>
   </tr><?php } ?>
 </table><br /><br />
 <form method="post" action="ArticlesController.php">
