@@ -55,7 +55,6 @@ class Article
         $sql = "INSERT INTO articles (title,content, category_id, user_id) VALUES(?, ?, ?, ?)";
         $req = $this->database->prepare($sql);
         $res = $req->execute(array($title, $content, $cat, $user));
-        echo "Article created";
         foreach ($_POST as $val) {
             if (preg_match("#\##", $val)) {
                 $tags_object = new Tags();

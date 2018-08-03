@@ -60,7 +60,7 @@ class Tags
 
     public function assign_tags($tag_id, $article_id)
     {
-        var_dump($tag_id);
+        // var_dump($tag_id);
         $req = $this->database->prepare("SELECT id FROM links WHERE tag_id = :tag AND article_id = :article;");
         $req->execute(array(":tag" => $tag_id, ":article" => $article_id));
         if ($req->fetch() == false) {
