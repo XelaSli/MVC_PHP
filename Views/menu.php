@@ -1,5 +1,5 @@
 <div class="row">
-    <nav class="blue darken-4 row">
+    <nav class="light-blue darken-4 row">
         <ul id="nav-mobile" class="center">
             <li class="col s4"><a href="profile">Profile</a></li>
             <?php if ($_SESSION["group"] != "Admin"){ ?>

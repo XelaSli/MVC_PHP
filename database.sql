@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `category` text DEFAULT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 	
--- Ajout de catégories
-INSERT INTO `categories` (`category`) VALUES("Kitchen"), ("Garden"), ("Leisure");
+-- Adding categories
+INSERT INTO `categories` (`category`) VALUES("Kitchen"), ("Garden"), ("Leisure"), ("Work");
 
 DROP TABLE IF EXISTS `comments`;
 
@@ -46,6 +46,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `content` text DEFAULT NULL,
   `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Adding comments
+INSERT INTO `comments` (`comment`) VALUES;
 
 DROP TABLE IF EXISTS `tags`;
 

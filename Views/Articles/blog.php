@@ -58,7 +58,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
     }
     ?>
 <form method="post" action="add_comment&amp;id=<?=$article["id"]?>">
-<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <button class="waves-effect blue darken-1 btn"><input type="submit"  value="Add" /></button>
+<label for="comment">Add a comment: </label> <input width="50px" type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <button class="waves-effect blue darken-1 btn"><input type="submit"  value="Add" /></button>
 </form><br>
 <?php
 }
