@@ -63,8 +63,24 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
             header("Location: https://www.google.com/search?biw=1373&bih=635&tbm=isch&sa=1&ei=fwlkW42SHIOVlwTPrLCYBg&q=you%27re+a+loser&oq=you%27re+a+loser&gs_l=img.3...0.0.0.34856.0.0.0.0.0.0.0.0..0.0....0...1c..64.img..0.0.0....0.ONPh4REziNQ");
         }
         echo "<p>You have been banned! Don't come back!</p>";
-        echo "<p><a href='UsersController.php?action=logout'>OK :(</a></p>";
-        die();
+        echo "<p><img height='75%' src='../img/shame.gif' /></p>";
+        // echo "<p><a href='UsersController.php?action=logout'>OK :(</a></p>";
+        ?>
+<script type="text/javascript">
+window.onload = function(){
+    alert("Time to pay...");
+    for (i = 20; i > 0; i--){
+        if (i == 1){
+        alert(i + " more click to go, loser!");
+        window.location = "UsersController.php?action=logout";
+        }
+        else
+        alert(i + " more clicks to go, loser!");
+    }
+    }
+</script>
+        <?php
+die();
     } elseif (isset($_GET["action"]) && $_GET["action"] == "logout") {
         $userController::getUser()->log_out();
         header("Location: UsersController.php");
