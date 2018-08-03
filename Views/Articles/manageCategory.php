@@ -12,11 +12,11 @@
   </tr>
   <?php
   foreach($cats as $values){
-  echo "<tr><td>";
+  echo "<tr><td class='name' >";
   echo $values['category']."</td><td>";
   ?>
-  <td><a href="UsersController.php?action=edit_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
-  <a href="UsersController.php?action=delete_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete</i></a></td>
+  <td><a class='edit' href="ArticlesController.php?action=edit_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
+  <a href="ArticlesController.php?action=delete_category&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete</i></a></td>
   </tr>
   <?php } ?>
 </table><br /><br />

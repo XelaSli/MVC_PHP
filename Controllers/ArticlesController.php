@@ -139,5 +139,15 @@ if (isset($_GET["action"]) && $_GET["action"] == "delete_tag" && isset($_GET["id
     $id=$_GET['id'];
        $tags_object->delete_tag($id);
        header("Location: UsersController.php?action=manage_category");
+}
+if (isset($_GET["action"]) && $_GET["action"] == "delete_category" && isset($_GET["id"])) {
+    $id=$_GET['id'];
+    $category_object->delete_category($id);
+       header("Location: UsersController.php?action=manage_category");
 } 
+if (isset($_GET["action"]) && $_GET["action"] == "edit_category" && isset($_GET["id"])) {
+    $id=$_GET['id'];
+    $category_object->_category($id);
+       header("Location: UsersController.php?action=manage_category");
+}
 require_once "../Views/Articles/blog.php";

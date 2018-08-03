@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Config/Database.php';
+include_once '../Config/Database.php';
 
 class Users
 {

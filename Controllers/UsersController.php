@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "Models/Users.php";
+require_once "../Models/Users.php";
 class UsersController
 {
     private static $user;
@@ -87,17 +87,17 @@ die();
     } elseif (isset($_GET["action"]) && $_GET["action"] == "profile") {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         $data = $userController::getUser()->display_user($id);
-        require_once "Views/Users/profile.php";
+        require_once "../Views/Users/profile.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_article") && ($_SESSION["group"] != "User")) {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "manage_category") && ($_SESSION["group"] != "User")) {
         require_once "ArticlesController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
-        require_once "AdminController.php";
+        require_once "../AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_user") {
-        require_once "AdminController.php";
+        require_once "../AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_user") {
-        require_once "AdminController.php";
+        require_once "../AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         if ($id == $_GET["id"]) {
@@ -109,23 +109,23 @@ die();
 
     } elseif (isset($_GET['action']) && $_GET['action'] == 'admin' && $_SESSION['group'] == 'Admin') {
 
-        require_once "AdminController.php";
+        require_once "../AdminController.php";
 
     } elseif (isset($_GET['action']) && $_GET['action'] == 'delete_article') {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } elseif (isset($_GET['filter']) && isset($_GET['type'])) {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } elseif (isset($_GET['action']) && $_GET['action'] == 'edit_article') {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } elseif (isset($_GET['action']) && $_GET['action'] == 'add_comment') {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } elseif (isset($_GET['action']) && $_GET['action'] == 'delete_comment') {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     }
     if (isset($_POST["new_title"])) {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     } else {
-        require_once "ArticlesController.php";
+        require_once "../ArticlesController.php";
     }
 
 } elseif (isset($_GET["action"]) && $_GET["action"] == "register") {
@@ -156,7 +156,7 @@ die();
         //     }
         // }
     }
-    require_once "Views/Users/registration.php";
+    require_once "../Views/Users/registration.php";
 } else {
     if (isset($_POST["username_connect"]) && isset($_POST["password_connect"])) {
         $login = $userController::getUser()->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
@@ -167,5 +167,5 @@ die();
             echo "<p>Invalid username and/or password.</p>";
         }
     }
-    require_once "Views/Users/connexion.php";
+    require_once "../Views/Users/connexion.php";
 }
