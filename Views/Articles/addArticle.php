@@ -27,8 +27,7 @@
 <div class="input-field browser-default">
     <?php
     foreach($tags as $tag){
-        echo "<p><input type='checkbox' id='checkboxid' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";
-        echo "<label for='checkboxid' /> " . $tag["tag"] . "</label></p>";
+        echo "<p><label for='" . $tag["tag"] . "' /><input type='checkbox' id='" . $tag["tag"] . "' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' /><span>" . $tag["tag"] . "</span></label></p>";
     }
     ?>
 </div>

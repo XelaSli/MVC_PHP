@@ -17,9 +17,9 @@
 </select>
 <br><br><?php
 if ($user["banned"]=='yes') {
-                    echo "Banned:   <input type='checkbox' name='banned'  checked>";
+                    echo "<label for='banned'><span>Banned: </span><input type='checkbox' id='banned'  checked></label>";
                 } else {
-                    echo "Banned:   <input type='checkbox' name='banned'  unchecked>";
+                    echo "<label for='banned'><span>Banned: </span><input type='checkbox' id='banned'  unchecked></label>";
                 }
 
                 ?>

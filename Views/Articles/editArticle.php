@@ -28,12 +28,10 @@ foreach ($cats as $cat) {
 foreach ($tags as $tag) {
     // if ($tags_article["tag"] == $tag["tag"])
     if (in_array($tag["tag"], $tags_article)) {
-        echo "<input type='checkbox' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' checked />";
+        echo "<label for='" . $tag["tag"] . "' /><input type='checkbox' id='" . $tag["tag"] . "' value='" . $tag["tag"] . "' checked /><span>" . $tag["tag"] . "</span></label> ";
     } else {
-        echo "<input type='checkbox' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' />";
+        echo "<label for='" . $tag["tag"] . "' /><input type='checkbox' id='" . $tag["tag"] . "' value='" . $tag["tag"] . "' /><span>" . $tag["tag"] . "</span></label> ";
     }
-
-    echo "<label for='" . $tag["tag"] . "' /> " . $tag["tag"] . "</label> ";
 }
 ?>
 <br /><br />
