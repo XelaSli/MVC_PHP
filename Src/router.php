@@ -9,14 +9,41 @@ class Router
     public function routeReq()
     {
         $url = "";
-        if (isset($_GET["url"]) && $_GET["url"] != "") {
+        if (isset($_GET["url"]) && $_GET["url"] == "") {
+            require_once "Controllers/UsersController.php";
+        }
+        elseif (!isset($_GET["url"])) {
+            require_once "Controllers/UsersController.php";
+        } 
+        elseif (isset($_GET["url"]) && $_GET["url"] != "") {
             $url = explode("/", filter_var($_GET["url"]), FILTER_SANITIZE_URL);
             if (in_array($url[0], SELF::$actions)) {
                 $_GET["action"] = $url[0];
                 require_once "Controllers/UsersController.php";
+            } elseif (isset($url[0]) && isset($url[1])) {
+                $cnt = count($url);
+                if ($cnt > 2) {
+                    for ($shift = $cnt - 2; $shift > 0; $shift--) {
+                        array_shift($url);
+                    }
+                }
+                switch (true) {
+                    case (in_array($url[0], ["Author", "Date", "Category", "Tag"])):
+                        require_once "Controllers/UsersController.php";
+                        $_GET["filter"] = $url[1];
+                        $_GET["type"] = $url[0];
+                        break;
+
+                    default:
+                        require_once "Controllers/UsersController.php";
+                        break;
+                }
+            }
+            else {
+                echo "Error 404!";
             }
         } else {
-            require_once "Controllers/UsersController.php";
+            echo "Error 404!";
         }
     }
 }
