@@ -30,9 +30,11 @@ foreach ($articleList as $article) {
 if ($article["creation_date"] != $article["edition_date"]) {
         echo "<p><em>Last modification: " . $article["edition_date"] . "</em></p>";
     }
+    if ($article["category_id"] != false){
     ?>
     <p>Category: <a href=".?filter=<?=$article["category_id"]?>&amp;type=Category"><?=$category_object->getCategory($article["category_id"])?></a></p>
 <?php
+    }
 $tags = $tags_object->getArticleTags($article["id"]);
     if ($tags != false) {
         echo "Tags: ";
