@@ -90,7 +90,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
 if (isset($_GET["action"]) && $_GET["action"] == "delete_user" && isset($_GET["id"])) {
     $id=$_GET['id'];
         $user=$adminController->getAdmin()->delete_user($id, 1);
-    
+        header("Location: ./admin");
 } 
 
 if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
@@ -101,7 +101,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
     
     if (isset($_POST["username"]) && isset($_POST["email"])) {
         $adminController::editUser($id, $_POST["username"], $_POST["email"], $_POST["group"],$_POST["banned"]);
-        header("Location: index.php?action=admin");
+        header("Location: ./admin");
     }
     require_once("Views/Users/editUser.php");
 }

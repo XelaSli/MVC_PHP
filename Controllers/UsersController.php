@@ -74,7 +74,7 @@ window.onload = function(){
     for (i = 20; i > 0; i--){
         if (i == 1){
         alert(i + " more click to go, loser!");
-        window.location = "UsersController.php?action=logout";
+        window.location = "./logout";
         }
         else
         alert(i + " more clicks to go, loser!");
