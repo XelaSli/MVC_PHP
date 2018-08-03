@@ -46,4 +46,4 @@ foreach ($tags_article as $tag_article) {
 <p><a href="UsersController.php" class="waves-effect blue darken-1 btn">Back</a></p>
 <?php $content = ob_get_clean();?>
 
-<?php require_once "../Views/template.php";
+<?php require_once "Views/template.php";

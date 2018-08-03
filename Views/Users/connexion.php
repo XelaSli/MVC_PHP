@@ -13,5 +13,5 @@
 <p><a href="UsersController.php?action=register">Not registered yet?</a></p>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../Views/template.php");
+<?php require_once("Views/template.php");
 ?>

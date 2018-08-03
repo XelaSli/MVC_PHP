@@ -1,5 +1,5 @@
 <?php
-require_once "../Models/Article.php";
+require_once "Models/Article.php";
 
 class ArticleController
 {
@@ -77,7 +77,7 @@ else{
 }
 
 if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION["group"] != "User")) {
-    require_once "../Views/Articles/addArticle.php";
+    require_once "Views/Articles/addArticle.php";
 } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_article" && ($_SESSION["group"] != "User")) {
     $articleController->getArticle()->delete_article($_GET["id"]);
 } elseif (isset($_GET["action"]) && $_GET["action"] == "add_comment") {
@@ -93,7 +93,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
         header("Location: UsersController.php");
     }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "manage_category" && ($_SESSION["group"] != "User")) {
-    require_once "../Views/Articles/manageCategory.php";
+    require_once "Views/Articles/manageCategory.php";
 }
 
 elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSION["group"] != "User")) {
@@ -115,7 +115,7 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSIO
             $articleController->getArticle()->edit_article($_GET["id"], $_POST);
             header("Location: UsersController.php");
         }
-        require_once "../Views/Articles/editArticle.php";
+        require_once "Views/Articles/editArticle.php";
     } else {
         header("Location: UsersController.php");
     }
@@ -140,4 +140,4 @@ if (isset($_GET["action"]) && $_GET["action"] == "delete_tag" && isset($_GET["id
        $tags_object->delete_tag($id);
        header("Location: UsersController.php?action=manage_category");
 } 
-require_once "../Views/Articles/blog.php";
+require_once "Views/Articles/blog.php";

@@ -26,4 +26,4 @@
 <button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='UsersController.php?action=admin'">Back to Admin</button>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../Views/template.php");?>
+<?php require_once("Views/template.php");?>

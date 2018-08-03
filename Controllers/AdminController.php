@@ -1,5 +1,5 @@
 <?php
-require_once "../Models/Users.php";
+require_once "Models/Users.php";
 
 class AdminController
 {
@@ -69,7 +69,7 @@ class AdminController
             SELF::getAdmin();
             $create = SELF::$admin->create_user($username, md5($password), $email, $group);
             // if ($create) {
-            //     header("Location: ../Views/Users/admin.php");
+            //     header("Location: Views/Users/admin.php");
             // }
         }
     }
@@ -78,7 +78,7 @@ $adminController = AdminController::getAdminController();
 $userList = $adminController->displayUserList();
 
 if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
-    require_once("../Views/Users/createUser.php");
+    require_once("Views/Users/createUser.php");
 
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
         
@@ -103,6 +103,6 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
         $adminController::editUser($id, $_POST["username"], $_POST["email"], $_POST["group"],$_POST["banned"]);
         header("Location: UsersController.php?action=admin");
     }
-    require_once("../Views/Users/editUser.php");
+    require_once("Views/Users/editUser.php");
 }
-require_once("../Views/Users/admin.php");
+require_once("Views/Users/admin.php");

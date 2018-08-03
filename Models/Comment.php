@@ -1,7 +1,7 @@
 <?php
 
-include_once '../Config/Database.php';
-include_once '../Models/Article.php';
+include_once 'Config/Database.php';
+include_once 'Models/Article.php';
 
 class Comment
 {

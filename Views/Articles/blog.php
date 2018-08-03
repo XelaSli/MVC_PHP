@@ -1,7 +1,7 @@
 <?php $title = "Blog";?>
 
 <?php ob_start();?>
-<header><?php include_once '../Views/menu.php';?></header>
+<header><?php include_once 'Views/menu.php';?></header>
 <h1>Blog</h1>
 <form method="get" action="UsersController.php">
 <input type="hidden" value="create_article" id="action" name="action" />
@@ -67,4 +67,4 @@ $tags = $tags_object->getArticleTags($article["id"]);
 ?>
 <?php $content = ob_get_clean();?>
 
-<?php require_once "../Views/template.php";
+<?php require_once "Views/template.php";
