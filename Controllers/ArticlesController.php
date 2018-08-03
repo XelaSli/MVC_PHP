@@ -147,7 +147,15 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "delete_category" && isset(
 }
 elseif (isset($_GET["action"]) && $_GET["action"] == "edit_category" && isset($_GET["id"])) {
     $id=$_GET['id'];
-       $category_object->edit_category($id);
+    $cats = $category_object->getCategories();
+
+    if (isset($_POST["category"])) {
+        $category_object->edit_category($id, $_POST['category']);
        header("Location: manage_category");
+    }
+    require_once("Views/Articles/editCategory.php");
+
+
+       
 } 
 require_once "Views/Articles/blog.php";
