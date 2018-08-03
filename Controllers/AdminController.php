@@ -89,7 +89,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_user"){
 }
 if (isset($_GET["action"]) && $_GET["action"] == "delete_user" && isset($_GET["id"])) {
     $id=$_GET['id'];
-        $user=$adminController->getAdmin()->delete_user($id);
+        $user=$adminController->getAdmin()->delete_user($id, 1);
     
 } 
 

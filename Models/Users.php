@@ -41,7 +41,7 @@ class Users
         return $res;
     }
 
-    public function create_user($username, $password, $email, $group='User')
+    public function create_user($username, $password, $email, $group = 'User')
     {
         $exists = $this->user_exists($username, $password);
         if ($exists) {
@@ -56,23 +56,42 @@ class Users
 
     public function edit_user($id, $username, $email, $group, $banned)
     {
-        if($banned==null)
-        $banned='no';
-        else
-        $banned='yes';
+        if ($banned == null) {
+            $banned = 'no';
+        } else {
+            $banned = 'yes';
+        }
+
         $sql = "UPDATE users SET username= ?, email = ?, `group`= ?, banned= ?, edition_date = NOW() WHERE id= ?";
         $req = $this->database->prepare($sql);
         $req->execute(array($username, $email, $group, $banned, $id));
         //header("Location:UsersController.php?action=admin");
     }
 
-    public function delete_user($id)
+    public function delete_user($id, $isAdmin = false)
     {
-        $sql = "DELETE FROM users WHERE id=?";
-        $req = $this->database->prepare($sql);
-        $req->execute(array($id));
-        echo "<p>The account has been deleted.</p>";
-        
+        if ($isAdmin) {
+            $req = $this->database->prepare("SELECT `group` FROM users WHERE id=?;");
+            $req->execute(array($id));
+            $res = $req->fetch();
+            if ($res["group"] != "Admin"){
+                $sql = "DELETE FROM users WHERE id=?;";
+                $req = $this->database->prepare($sql);
+                $req->execute(array($id));
+                header("Location: UsersController.php?action=admin");
+            }
+            else{
+                echo "<p>You can't delete an admin. Change the user's group first.</p>";
+            }
+
+            
+        } else {
+            $sql = "DELETE FROM users WHERE id=?";
+            $req = $this->database->prepare($sql);
+            $req->execute(array($id));
+            echo "<p>The account has been deleted.</p>";
+        }
+
     }
 
     public function log_in($username, $password)
