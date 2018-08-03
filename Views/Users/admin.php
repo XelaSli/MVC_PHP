@@ -36,5 +36,5 @@
 <button  type="button" onclick="location.href='UsersController.php'" class="waves-effect blue darken-1 btn">Back to Index</button>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../Views/template.php");
+<?php require_once("Views/template.php");
 ?>

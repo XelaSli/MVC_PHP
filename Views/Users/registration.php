@@ -1,7 +1,7 @@
 <?php $title = "Registration"; ?>
 
 <?php ob_start(); ?>
-<form method="post" action="UsersController.php?action=register">
+<form method="post" action="register">
     <label for="username">Username:   </label>
     <input type="text" id="username" name="username" class="center-align" placeholder="username" required>
     <br><br>
@@ -18,4 +18,4 @@
 </form>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../Views/template.php");?>
+<?php require_once ("Views/template.php");?>

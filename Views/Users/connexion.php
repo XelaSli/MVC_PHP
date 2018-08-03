@@ -10,8 +10,8 @@
 
 <input type="submit" class="waves-effect blue darken-1 btn" value="Log in" />
 </form>
-<p><a href="UsersController.php?action=register">Not registered yet?</a></p>
+<p><a href="register">Not registered yet?</a></p>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../Views/template.php");
+<?php require_once("Views/template.php");
 ?>
