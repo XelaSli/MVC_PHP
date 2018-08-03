@@ -125,8 +125,8 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSIO
     header("Location: UsersController.php");
 
 }elseif (isset($_POST["title_category"])) {
-    $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
-    $articleController->getArticle()->create_article($_POST);
+    
+    $category_object->add_category($_POST['title_category']);
     header("Location: UsersController.php");
 }
 

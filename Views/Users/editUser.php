@@ -17,10 +17,11 @@
 </select>
 <br><br><?php
 if ($user["banned"]=='yes') {
-                    echo "Banned:   <input type='checkbox' name='banned'  checked>";
-                } else {
-                    echo "Banned:   <input type='checkbox' name='banned'  unchecked>";
-                }
+    echo "<p><label for='banned'><input type='checkbox' id='banned' class='filled-in' checked/><span>Banned: </span></label></p>";
+} 
+else {
+    echo "<p><label for='banned'><input type='checkbox' id='banned' class='filled-in' unchecked/><span>Banned</span></label></p>";
+}
 
                 ?>
 <br><br>
