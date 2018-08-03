@@ -13,7 +13,7 @@ class Tags
 
     public function getTags()
     {
-        $sql = "SELECT tag FROM tags ORDER BY tag;";
+        $sql = "SELECT tag, id  FROM tags ORDER BY tag;";
         $req = $this->database->query($sql);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return ($res);
@@ -32,14 +32,18 @@ class Tags
     {
         $tagList = explode(" ", $tags);
         foreach ($tagList as $tag) {
+            if (!preg_match("#^\##",$tag)){
+                $tag = "#".$tag;
+            }       
+            
             $req = $this->database->prepare("SELECT tag FROM tags WHERE tag=:tag;");
-            $req->execute(array(":category" => $tag));
+            $req->execute(array(":tag" => $tag));
             if ($req->fetch() == false) {
                 $req->closeCursor();
-                $req = $this->database->prepare("INSERT INTO tags(tag) VALUES(tag=:tag;");
+                $req = $this->database->prepare("INSERT INTO tags(tag) VALUES(:tag);");
                 $req->execute(array(":tag" => $tag));
             }
-        }
+         }
     }
 
     public function delete_tag($id)
@@ -47,8 +51,7 @@ class Tags
         $sql = "DELETE FROM tags WHERE id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
-        echo "<p>This tag has been deleted.</p>";
-        echo "<p><a href=''>OK</a></p>";
+       
     }
 
     public function delete_article_tag($id, $article_id)
@@ -60,7 +63,7 @@ class Tags
 
     public function assign_tags($tag_id, $article_id)
     {
-        // var_dump($tag_id);
+        
         $req = $this->database->prepare("SELECT id FROM links WHERE tag_id = :tag AND article_id = :article;");
         $req->execute(array(":tag" => $tag_id, ":article" => $article_id));
         if ($req->fetch() == false) {

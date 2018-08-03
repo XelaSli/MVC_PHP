@@ -95,6 +95,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
 } elseif (isset($_GET["action"]) && $_GET["action"] == "manage_category" && ($_SESSION["group"] != "User")) {
     require_once "../Views/Articles/manageCategory.php";
 }
+
 elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSION["group"] != "User")) {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $article_data = $articleController->getArticle()->display_article($_GET["id"]);
@@ -125,9 +126,18 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSIO
     header("Location: UsersController.php");
 
 }elseif (isset($_POST["title_category"])) {
-    
+    //var_dump($_POST);
     $category_object->add_category($_POST['title_category']);
-    header("Location: UsersController.php");
-}
+    header("Location: UsersController.php?action=manage_category");
 
+}elseif (isset($_POST["title_tag"])) {
+    //var_dump($_POST);
+    $tags_object->create_tags($_POST['title_tag']);
+    header("Location: UsersController.php?action=manage_category");
+}
+if (isset($_GET["action"]) && $_GET["action"] == "delete_tag" && isset($_GET["id"])) {
+    $id=$_GET['id'];
+       $tags_object->delete_tag($id);
+       header("Location: UsersController.php?action=manage_category");
+} 
 require_once "../Views/Articles/blog.php";
