@@ -33,9 +33,9 @@
 </div>
 <br /><br />
 <input type="hidden" value="<?= $userController::getUser()->getUserId($_SESSION["username"]); ?>" name="author" id="author" />
-<input class="waves-effect blue darken-1 btn" type="submit" value="Add" />
+<button class="waves-effect blue darken-1 btn"><input type="submit" value="Add" /></button>
 </form>
-<p><a href="." class="waves-effect blue darken-1 btn">Back</a></p>
+<p><button class="waves-effect blue darken-1 btn"<a href="." class="waves-effect blue darken-1 btn">Back</a></button></p>
 <?php $content = ob_get_clean();?>
 
 <?php require_once "Views/template.php";

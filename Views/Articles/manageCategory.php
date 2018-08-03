@@ -1,7 +1,7 @@
 <?php $title = "Manage category"; ?>
 
 <?php ob_start();?>
-<p><a href="." class="waves-effect blue darken-1 btn">Back</a></p>
+<p><button class="waves-effect blue darken-2 btn"><a href=".">Back</a></button></p>
 
 <div class="row">
 <div class="col s6">
@@ -30,7 +30,7 @@
   <form method="post" action=".">
   <label for="title_category"><strong>Title:</strong> </label>
   <input type="text" id="title_category" name="title_category" required />
-  <input class="waves-effect blue darken-1 btn" type="submit" value="Add Category" />
+  <button class="waves-effect blue darken-1 btn"><input  type="submit" value="Add Category" /></button>
   </form>
   </div>
   <div class="col s6">
@@ -59,7 +59,7 @@
 <form method="post" action=".">
 <label for="title_taf"><strong>Title:</strong> </label>
 <input type="text" id="title_tag" name="title_tag" required />
-<input class="waves-effect blue darken-1 btn" type="submit" value="Add Tag" />
+<button class="waves-effect blue darken-1 btn"><input type="submit" value="Add Tag" /></button>
 </form>
 </div>
 </div>
