@@ -96,7 +96,7 @@ class Users
 
     public function log_in($username, $password)
     {
-        $req = $this->database->prepare("SELECT username, password,`group` FROM users WHERE username=:username;");
+        $req = $this->database->prepare("SELECT username, password,`group`, banned FROM users WHERE username=:username;");
         $req->execute(array(":username" => $username));
         $res = $req->fetch();
         if (!$res) {
@@ -106,6 +106,7 @@ class Users
                 $_SESSION['username'] = $res['username'];
                 $_SESSION['password'] = $res['password'];
                 $_SESSION['group'] = $res['group'];
+                $_SESSION['banned'] = $res['banned'];
                 return true;
             } else {
                 return false;
