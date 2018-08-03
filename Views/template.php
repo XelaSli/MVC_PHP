@@ -37,6 +37,7 @@
     </div>
 </div>
 </main>
+<br>
 <footer class="page-footer grey darken-1">
     <div class="container" height="50px">
         <div class="row">

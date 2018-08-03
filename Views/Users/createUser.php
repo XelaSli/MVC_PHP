@@ -23,7 +23,7 @@
     <br><br>
     <button  type="submit" class="waves-effect blue darken-1 btn" name="submit">Create</button>
 </form><br>
-<button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='./admin'">Back to Admin</button>
+<button  type="button" class="waves-effect blue darken-1 btn" onclick="location.href='./admin'">Back to Admin</button><br><br>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("Views/template.php");?>
