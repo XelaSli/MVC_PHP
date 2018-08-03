@@ -8,7 +8,7 @@
 <label for="password_connect">Password: </label>
 <input type="password" id="password_connect" class="center-align" name="password_connect" required /><br /><br />
 
-<input type="submit" class="waves-effect blue darken-1 btn" value="Log in" />
+<button class="waves-effect blue darken-1 btn" ><input type="submit" value="Log in" /></button>
 </form>
 <p><a href="register">Not registered yet?</a></p>
 <?php $content = ob_get_clean(); ?>

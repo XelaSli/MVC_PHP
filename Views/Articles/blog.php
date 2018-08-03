@@ -6,13 +6,13 @@
 <form method="get" action="create_article">
 <?php
 if ($_SESSION["group"] != "User") {?>
-<input type="submit" value="Add a new article" class="waves-effect blue darken-1 btn"/>
+<button class="waves-effect blue darken-1 btn"><input type="submit" value="Add a new article" /></button>
 <?php }?>
 </form>
 <form method="get" action="manage_category">
 <?php
 if ($_SESSION["group"] != "User") {?><br>
-<input type="submit" value="Manage category / Tags" class="waves-effect blue darken-1 btn"/>
+<button class="waves-effect blue darken-1 btn"><input type="submit" value="Manage category / Tags"/></button>
 <?php }?>
 </form>
 <?php
@@ -58,7 +58,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
     }
     ?>
 <form method="post" action="add_comment&amp;id=<?=$article["id"]?>">
-<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" class="waves-effect blue darken-1 btn" value="Add" />
+<label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <button class="waves-effect blue darken-1 btn"><input type="submit"  value="Add" /></button>
 </form><br>
 <?php
 }
