@@ -65,6 +65,18 @@ class Article
         }
     }
 
+    public function deleteLinks($tag_id, $article_id)
+    {
+        if ($tag_id == "") {
+            $req = $this->database->prepare("DELETE FROM links WHERE article_id = :id;");
+            $req->execute(array(":id" => $article_id));
+        }
+        elseif ($article_id == "") {
+            $req = $this->database->prepare("DELETE FROM links WHERE tag_id = :id;");
+            $req->execute(array(":id" => $tag_id));
+        }
+    }
+
     public function edit_article($id, $data)
     {
         $title = $data["new_title"];
@@ -101,6 +113,7 @@ class Article
         $comment = new Comment();
         $req->closeCursor();
         $comment->delete_article_comments($id);
+        $this->deleteLinks("", $id);
     }
 
     public function getLatestId()

@@ -51,6 +51,8 @@ class Tags
         $sql = "DELETE FROM tags WHERE id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($id));
+        $article = new Article();
+        $article->deleteLinks($id, "");
        
     }
 
