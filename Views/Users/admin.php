@@ -29,8 +29,8 @@
   echo $values['creation_date']."</td><td>";
   echo $values['edition_date']."</td>";
   ?>
-  <td><a href="UsersController.php?action=edit_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a></td>
-  <td><a href="UsersController.php?action=delete_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
+  <td><a href="UsersController.php?action=edit_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">edit</i></a>
+  <a href="UsersController.php?action=delete_user&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
   </tr><?php } ?>
 </table><br><br>
 <button  type="button" onclick="location.href='UsersController.php'" class="waves-effect blue darken-1 btn">Back to Index</button>

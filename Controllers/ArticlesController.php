@@ -67,6 +67,8 @@ $category_object = new Categories();
 $tags_object = new Tags();
 $tags = $tags_object->getTags();
 $cats = $category_object->getCategories();
+
+
 if (isset($_GET["filter"]) && isset($_GET["type"])) {
         $articleList = $articleController::getArticle()->filter_articles($_GET["filter"], $_GET["type"]);
 }
@@ -90,8 +92,8 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
         $comment_object->delete_comment($_GET["id"]);
         header("Location: UsersController.php");
     }
-} elseif (isset($_GET["action"]) && $_GET["action"] == "create_category" && ($_SESSION["group"] != "User")) {
-    require_once "../Views/Articles/addCategory.php";
+} elseif (isset($_GET["action"]) && $_GET["action"] == "manage_category" && ($_SESSION["group"] != "User")) {
+    require_once "../Views/Articles/manageCategory.php";
 }
 elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSION["group"] != "User")) {
     if (isset($_GET["id"]) && $_GET["id"] != "") {
@@ -118,6 +120,11 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSIO
     }
 
 } elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
+    $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
+    $articleController->getArticle()->create_article($_POST);
+    header("Location: UsersController.php");
+
+}elseif (isset($_POST["title_category"])) {
     $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
     $articleController->getArticle()->create_article($_POST);
     header("Location: UsersController.php");
