@@ -14,7 +14,6 @@ CREATE TABLE `users` (
   `edition_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE NOW()
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 DROP TABLE IF EXISTS `articles`;
 
 CREATE TABLE IF NOT EXISTS `articles` (
@@ -33,9 +32,6 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` SERIAL,
   `category` text DEFAULT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-	
--- Adding categories
-INSERT INTO `categories` (`category`) VALUES("Kitchen"), ("Garden"), ("Leisure"), ("Work");
 
 DROP TABLE IF EXISTS `comments`;
 
@@ -47,18 +43,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `creation_date` DATETIME DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Adding comments
-INSERT INTO `comments` (`comment`) VALUES;
-
 DROP TABLE IF EXISTS `tags`;
 
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` SERIAL,
   `tag` text NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Ajout de tags
-INSERT INTO `tags` (`tag`) VALUES("#fit"), ("#health"), ("#fun");
 
 DROP TABLE IF EXISTS `links`;
 

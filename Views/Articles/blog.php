@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 <header><?php include_once 'Views/menu.php';?></header>
-<h1>Blog</h1>
+<h1>BLOG</h1>
 <form method="get" action="create_article">
 <?php
 if ($_SESSION["group"] != "User") {?>
