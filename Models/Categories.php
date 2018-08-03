@@ -30,7 +30,22 @@ class Categories{
         $sql="DELETE FROM categories WHERE id=?";
         $req=$this->database->prepare($sql);
         $req->execute(array($id));
+        $this->update_category($id);
        
+    }
+
+    public function update_category($id)
+    {
+        $sql="UPDATE articles SET category_id =null WHERE category_id=:category";
+        $req=$this->database->prepare($sql);
+        $req->execute(array(":category" => $id));
+    }
+
+    public function edit_category($id, $category)
+    {
+        $sql="UPDATE categories SET category = ? WHERE id=?";
+        $req = $this->database->prepare($sql);
+        $req->execute(array($category, $id));
     }
 
     public function getCategories()

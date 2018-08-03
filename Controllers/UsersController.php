@@ -134,6 +134,9 @@ die();
     } elseif (isset($_GET['action']) && $_GET['action'] == 'delete_comment') {
         require_once "ArticlesController.php";
     }
+    elseif (isset($_GET['action']) && $_GET['action'] == 'edit_category') {
+        require_once "ArticlesController.php";
+    }
     if (isset($_POST["new_title"])) {
         require_once "ArticlesController.php";
     } else {

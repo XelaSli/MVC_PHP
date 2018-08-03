@@ -1,7 +1,7 @@
 <?php $title = "Manage category"; ?>
 
 <?php ob_start();?>
-<p><button class="waves-effect blue darken-2 btn"><a href=".">Back</a></button></p>
+<p><button type="button" onclick="location.href='.'" class="waves-effect blue darken-2 btn">Back</button></p>
 
 <div class="row">
 <div class="col s6">

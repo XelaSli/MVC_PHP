@@ -116,6 +116,8 @@ class Article
         $this->deleteLinks("", $id);
     }
 
+    
+
     public function getLatestId()
     {
         $sql = "SELECT id FROM articles ORDER BY id DESC LIMIT 1";
