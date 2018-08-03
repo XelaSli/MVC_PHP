@@ -27,7 +27,7 @@
 <body>
 <header>
     <div class="blue darken-4 center-align">
-        <div><a href="Controllers/UsersController.php"><img src="img/fakebook1.jpg" class="responsive-img" width="30%" height="30%"></a></div>
+        <div><a href="index.php"><img src="img/fakebook1.jpg" class="responsive-img" width="30%" height="30%"></a></div>
     </div>
 </header>
 

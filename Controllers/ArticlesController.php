@@ -56,7 +56,7 @@ class ArticleController
     //         SELF::getUser();
     //         $create = SELF::$user->create_user($username, md5($password), $email);
     //         if ($create) {
-    //             header("Location: UsersController.php");
+    //             header("Location: index.php");
     //         }
     //     }
     // }
@@ -84,13 +84,13 @@ if (isset($_GET["action"]) && $_GET["action"] == "create_article" && ($_SESSION[
     if (isset($_GET["id"]) && isset($_POST["comment"])) {
         $comment_object = new Comment();
         $comment_object->create_comment($_POST["author"], $_GET["id"], $_POST["comment"]);
-        header("Location: UsersController.php");
+        header("Location: index.php");
     }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_comment") {
     if (isset($_GET["id"])) {
         $comment_object = new Comment();
         $comment_object->delete_comment($_GET["id"]);
-        header("Location: UsersController.php");
+        header("Location: index.php");
     }
 } elseif (isset($_GET["action"]) && $_GET["action"] == "manage_category" && ($_SESSION["group"] != "User")) {
     require_once "Views/Articles/manageCategory.php";
@@ -113,31 +113,31 @@ elseif (isset($_GET["action"]) && $_GET["action"] == "edit_article" && ($_SESSIO
         if (isset($_POST["new_title"])) {
             $_POST["new_category"] = $category_object->getCatId($_POST["new_category"]);
             $articleController->getArticle()->edit_article($_GET["id"], $_POST);
-            header("Location: UsersController.php");
+            header("Location: index.php");
         }
         require_once "Views/Articles/editArticle.php";
     } else {
-        header("Location: UsersController.php");
+        header("Location: index.php");
     }
 
 } elseif (isset($_POST["title_article"]) && isset($_POST["content_article"]) && isset($_POST["category_select"])) {
     $_POST["category_select"] = $category_object->getCatId($_POST["category_select"]);
     $articleController->getArticle()->create_article($_POST);
-    header("Location: UsersController.php");
+    header("Location: index.php");
 
 }elseif (isset($_POST["title_category"])) {
     //var_dump($_POST);
     $category_object->add_category($_POST['title_category']);
-    header("Location: UsersController.php?action=manage_category");
+    header("Location: index.php?action=manage_category");
 
 }elseif (isset($_POST["title_tag"])) {
     //var_dump($_POST);
     $tags_object->create_tags($_POST['title_tag']);
-    header("Location: UsersController.php?action=manage_category");
+    header("Location: index.php?action=manage_category");
 }
 if (isset($_GET["action"]) && $_GET["action"] == "delete_tag" && isset($_GET["id"])) {
     $id=$_GET['id'];
        $tags_object->delete_tag($id);
-       header("Location: UsersController.php?action=manage_category");
+       header("Location: index.php?action=manage_category");
 } 
 require_once "Views/Articles/blog.php";

@@ -78,7 +78,8 @@ class Users
                 $sql = "DELETE FROM users WHERE id=?;";
                 $req = $this->database->prepare($sql);
                 $req->execute(array($id));
-                header("Location: UsersController.php?action=admin");
+                $_GET["action"] = "admin";
+                header("Location: .");
             }
             else{
                 echo "<p>You can't delete an admin. Change the user's group first.</p>";
@@ -118,7 +119,7 @@ class Users
     {
         session_destroy();
         unset($_SESSION);
-        header("Location: UsersController.php");
+        header("Location: .");
     }
 
     public function get_group($id)

@@ -49,8 +49,10 @@ class UsersController
             SELF::getUser();
             $create = SELF::$user->create_user($username, md5($password), $email);
             if ($create) {
-                header("Location: UsersController.php");
+                header("Location: .");
             }
+            else
+            echo "fail";
         }
     }
 }
@@ -83,21 +85,21 @@ window.onload = function(){
 die();
     } elseif (isset($_GET["action"]) && $_GET["action"] == "logout") {
         $userController::getUser()->log_out();
-        header("Location: UsersController.php");
+        header("Location: .");
     } elseif (isset($_GET["action"]) && $_GET["action"] == "profile") {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         $data = $userController::getUser()->display_user($id);
         require_once "Views/Users/profile.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_article") && ($_SESSION["group"] != "User")) {
-        require_once "ArticlesController.php";
+        require_once "Controller/ArticlesController.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "manage_category") && ($_SESSION["group"] != "User")) {
-        require_once "ArticlesController.php";
+        require_once "Controller/ArticlesController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
-        require_once "AdminController.php";
+        require_once "Controller/AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_user") {
-        require_once "AdminController.php";
+        require_once "Controller/AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_user") {
-        require_once "AdminController.php";
+        require_once "Controller/AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         if ($id == $_GET["id"]) {
@@ -131,37 +133,13 @@ die();
 } elseif (isset($_GET["action"]) && $_GET["action"] == "register") {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_confirmation"]) && isset($_POST["email"])) {
         $userController::register($_POST["username"], $_POST["password"], $_POST["password_confirmation"], $_POST["email"]);
-        // $errors = 0;
-        // if (strlen($_POST["username"]) < 3 || strlen($_POST["username"]) > 10) {
-        //     echo "<p>Invalid username.</p>";
-        //     $errors++;
-
-        // }
-        // if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST["email"])) {
-        //     echo "<p>Invalid email.</p>";
-        //     $errors++;
-        // }
-        // if ($_POST["password"] != $_POST["password_confirmation"]) {
-        //     echo "<p>Invalid password.</p>";
-        //     $errors++;
-        // }
-        // if (strlen($_POST["password"]) < 8 || strlen($_POST["password"]) > 20) {
-        //     echo "<p>Invalid password.</p>";
-        //     $errors++;
-        // }
-        // if ($errors == 0) {
-        //     $create = $user->create_user($_POST["username"], md5($_POST["password"]), $_POST["email"]);
-        //     if ($create) {
-        //         header("Location: UsersController.php");
-        //     }
-        // }
     }
     require_once "Views/Users/registration.php";
 } else {
     if (isset($_POST["username_connect"]) && isset($_POST["password_connect"])) {
         $login = $userController::getUser()->log_in($_POST["username_connect"], md5($_POST["password_connect"]));
         if ($login) {
-            header("Location: UsersController.php");
+            header("Location: .");
         }
          else {
             echo "<p>Invalid username and/or password.</p>";

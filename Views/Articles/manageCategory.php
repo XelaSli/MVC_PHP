@@ -55,7 +55,7 @@
     </tbody>    
   </table>
 <br /><br />
-<form method="post" action="ArticlesController.php">
+<form method="post" action="Controller/ArticlesController.php">
 <label for="title_taf"><strong>Title:</strong> </label>
 <input type="text" id="title_tag" name="title_tag" required />
 <input class="waves-effect blue darken-1 btn" type="submit" value="Add Tag" />

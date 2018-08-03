@@ -32,7 +32,7 @@ class Comment
         $sql = "DELETE FROM comments WHERE article_id=?";
         $req = $this->database->prepare($sql);
         $req->execute(array($article_id));
-        header("Location: UsersController.php");
+        header("Location: .");
     }
 
     public function display_comments($article_id)
