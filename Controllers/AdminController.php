@@ -100,7 +100,6 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit_user"){
     
     
     if (isset($_POST["username"]) && isset($_POST["email"])) {
-        
         $adminController::editUser($id, $_POST["username"], $_POST["email"], $_POST["group"],$_POST["banned"]);
         header("Location: UsersController.php?action=admin");
     }

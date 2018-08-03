@@ -27,7 +27,7 @@
 <div>
     <?php
     foreach($tags as $tag){
-        echo "<p><label for='" . $tag["tag"] . "' /><input type='checkbox' id='" . $tag["tag"] . "' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' /><span>" . $tag["tag"] . "</span></label></p>";
+        echo "<p><label for='" . $tag["tag"] . "' /><input type='checkbox' id='" . $tag["tag"] . "' name='" . $tag["tag"] . "' class='filled-in' name='" . $tag["tag"] . "' value='" . $tag["tag"] . "' /><span>" . $tag["tag"] . "</span></label></p>";
     }
     ?>
 </div>
