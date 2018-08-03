@@ -3,15 +3,13 @@
 <?php ob_start();?>
 <header><?php include_once 'Views/menu.php';?></header>
 <h1>Blog</h1>
-<form method="get" action="UsersController.php">
-<input type="hidden" value="create_article" id="action" name="action" />
+<form method="get" action="create_article">
 <?php
 if ($_SESSION["group"] != "User") {?>
 <input type="submit" value="Add a new article" class="waves-effect blue darken-1 btn"/>
 <?php }?>
 </form>
-<form method="get" action="UsersController.php">
-<input type="hidden" value="manage_category" id="action" name="action" />
+<form method="get" action="manage_category">
 <?php
 if ($_SESSION["group"] != "User") {?><br>
 <input type="submit" value="Manage category / Tags" class="waves-effect blue darken-1 btn"/>
@@ -43,7 +41,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
         }
     }
     if ($_SESSION["group"] != "User") {?>
-    <p><a href="UsersController.php?action=edit_article&amp;id=<?=$article["id"]?>"><i class="material-icons">edit</i></a> - <a href="UsersController.php?action=delete_article&amp;id=<?=$article["id"]?>"><i class="material-icons">delete_forever</i></a></p>
+    <p><a href="edit_article&amp;id=<?=$article["id"]?>"><i class="material-icons">edit</i></a> - <a href="delete_article&amp;id=<?=$article["id"]?>"><i class="material-icons">delete_forever</i></a></p>
     <?php
 }
     $comment_object = new Comment();
@@ -51,7 +49,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
     if ($comments != false) {
         foreach ($comments as $comment) {
             if ($comment["username"] == $_SESSION["username"]) {
-                echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='UsersController.php?action=delete_comment&amp;id=" . $comment["id"] . "'>Delete comment</a></p>";
+                echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"] . " <a href='delete_comment&amp;id=" . $comment["id"] . "'>Delete comment</a></p>";
             } else {
                 echo "<p><strong>" . $comment["username"] . ": </strong>" . $comment["content"];
             }
@@ -59,7 +57,7 @@ $tags = $tags_object->getArticleTags($article["id"]);
         }
     }
     ?>
-<form method="post" action="UsersController.php?action=add_comment&amp;id=<?=$article["id"]?>">
+<form method="post" action="add_comment&amp;id=<?=$article["id"]?>">
 <label for="comment">Add a comment: </label> <input type="hidden" name="author" id="author" value="<?=$userController::getUser()->getUserId($_SESSION["username"]);?>" /><input type="text" name="comment" id="comment" required /> <input type="submit" class="waves-effect blue darken-1 btn" value="Add" />
 </form>
 <?php

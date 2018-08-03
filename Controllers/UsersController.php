@@ -91,15 +91,25 @@ die();
         $data = $userController::getUser()->display_user($id);
         require_once "Views/Users/profile.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "create_article") && ($_SESSION["group"] != "User")) {
-        require_once "Controller/ArticlesController.php";
+        require_once "ArticlesController.php";
     } elseif ((isset($_GET["action"])) && ($_GET["action"] == "manage_category") && ($_SESSION["group"] != "User")) {
-        require_once "Controller/ArticlesController.php";
+        require_once "ArticlesController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "create_user") {
-        require_once "Controller/AdminController.php";
+        require_once "AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "edit_user") {
-        require_once "Controller/AdminController.php";
-    } elseif (isset($_GET["action"]) && $_GET["action"] == "delete_user") {
-        require_once "Controller/AdminController.php";
+        require_once "AdminController.php";
+    }
+    elseif (isset($_GET["action"]) && $_GET["action"] == "edit_category") {
+        require_once "ArticlesController.php";
+    }
+    elseif (isset($_GET["action"]) && $_GET["action"] == "delete_category") {
+        require_once "ArticlesController.php";
+    }
+    elseif (isset($_GET["action"]) && $_GET["action"] == "delete_tag") {
+        require_once "ArticlesController.php";
+    }
+     elseif (isset($_GET["action"]) && $_GET["action"] == "delete_user") {
+        require_once "AdminController.php";
     } elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["id"])) {
         $id = $userController::getUser()->getUserId($_SESSION["username"]);
         if ($id == $_GET["id"]) {
