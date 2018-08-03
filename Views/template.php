@@ -24,7 +24,7 @@
     </script>
     <title><?=$title?></title>
 </head>
-<body>
+<main>
 <header>
     <div class="blue darken-4 center-align">
         <div><a href="index.php"><img src="img/fakebook1.jpg" class="responsive-img" width="30%" height="30%"></a></div>
@@ -36,7 +36,7 @@
         <?=$content?>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br>
+</main>
 <footer class="page-footer grey darken-1">
     <div class="container" height="50px">
         <div class="row">
@@ -58,5 +58,4 @@
         </div>
     </div>
 </footer>
-</body>
 </html>
