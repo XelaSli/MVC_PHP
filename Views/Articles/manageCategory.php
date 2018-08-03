@@ -50,6 +50,7 @@
     echo "<tr><td>";
     echo $values['tag']."</td><td>";
     ?>
+    <td><a href=""><i ></i></a> <!--FIX for Tag table not being aligned_-->
     <a href="delete_tag&amp;id=<?php echo $values['id']?>"><i class="material-icons">delete_forever</i></a></td>
     </tr><?php } ?>
     </tbody>    
