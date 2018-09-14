@@ -7,8 +7,8 @@ class Database
     private $connection;
     
     private $dsn = 'mysql:host=localhost;dbname=db_PHP_Rush_MVC;charset=utf8';
-    private $username = 'root';
-    private $password = 'root';
+    private $username = '';
+    private $password = '';
     
     private function __construct()
     {
